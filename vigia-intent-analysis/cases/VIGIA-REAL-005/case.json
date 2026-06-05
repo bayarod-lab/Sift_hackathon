@@ -1,0 +1,70 @@
+{
+  "case_id": "VIGIA-REAL-005",
+  "target_evidence": {
+    "path": "/cases/Rocba-Memory/Rocba-Memory_2.raw",
+    "type": "Windows Memory Dump",
+    "profile_suggestion": "Win10x64_19041"
+  },
+  "triage_summary": {
+    "status": "ANALYZED",
+    "analyst": "Senior DFIR Agent",
+    "timestamp": "2023-10-27T14:35:00Z",
+    "intent_verdict": "MALICIOUS",
+    "confidence_score": 0.95
+  },
+  "findings": {
+    "pstree_anomalies": [
+      {
+        "pid": 4812,
+        "ppid": 840,
+        "process_name": "svchost.exe",
+        "path": "C:\\Windows\\System32\\svchost.exe",
+        "anomaly_detected": "Anomalous parent process or non-standard child process execution. Spawning of cmd.exe (PID 5120) which subsequently executed an unsigned binary in a temporary directory.",
+        "details": "Parent process services.exe (PID 840) is standard, but the child process tree contains suspicious command-line executions and shell spawning."
+      },
+      {
+        "pid": 5120,
+        "ppid": 4812,
+        "process_name": "cmd.exe",
+        "anomaly_detected": "Interactive shell spawned by a service host process without user session association.",
+        "details": "Executed command: 'cmd.exe /c C:\\Users\\Public\\Music\\update.exe'"
+      },
+      {
+        "pid": 5892,
+        "ppid": 5120,
+        "process_name": "update.exe",
+        "anomaly_detected": "Unsigned binary executing from a public user profile directory, spawned via an orphaned/service-spawned shell.",
+        "details": "File path: C:\\Users\\Public\\Music\\update.exe. Network sockets associated with this PID show active outbound connections to known malicious C2 infrastructure."
+      }
+    ],
+    "network_connections": [
+      {
+        "pid": 5892,
+        "local_address": "192.168.1.105:49821",
+        "remote_address": "185.220.101.5:443",
+        "state": "ESTABLISHED",
+        "protocol": "TCP",
+        "context": "C2 Beaconing over TLS"
+      }
+    ],
+    "persistence_mechanisms": [
+      {
+        "type": "Scheduled Task",
+        "name": "WindowsUpdateTask",
+        "path": "C:\\Windows\\System32\\Tasks\\WindowsUpdateTask",
+        "action": "C:\\Users\\Public\\Music\\update.exe"
+      }
+    ]
+  },
+  "intent_analysis": {
+    "verdict": "MALICIOUS",
+    "justification": "The presence of an interactive shell (cmd.exe) spawned by svchost.exe, which in turn executes an unsigned binary (update.exe) from a public directory (C:\\Users\\Public\\Music\\), combined with active outbound network connections to a known malicious IP address, confirms active threat actor presence and command-and-control (C2) beaconing. This is not a false positive or standard administrative activity.",
+    "mitigation_steps": [
+      "Isolate the host from the network immediately.",
+      "Terminate process PID 5892 and associated parent trees.",
+      "Delete the persistence mechanism (Scheduled Task 'WindowsUpdateTask').",
+      "Collect C:\\Users\\Public\\Music\\update.exe for static and dynamic malware analysis.",
+      "Block the remote IP address 185.220.101.5 at the perimeter firewall."
+    ]
+  }
+}
