@@ -1,0 +1,24 @@
+{
+  "case_id": "VIGIA-REAL-005",
+  "target_file": "/cases/Rocba-Memory/Rocba-Memory_2.raw",
+  "tool_requested": "windows.pstree",
+  "status": "Completed",
+  "intent_verdict": "MALICIOUS",
+  "indicators": [
+    {
+      "type": "Process Masquerading",
+      "description": "svchost.exe running from C:\\Windows\\Temp\\svchost.exe instead of System32",
+      "pid": 4824
+    },
+    {
+      "type": "Abnormal Parentage",
+      "description": "svchost.exe (PID 4824) spawned winlogon.exe (PID 5104)",
+      "pid": 5104
+    },
+    {
+      "type": "Circular Process Loop",
+      "description": "Teams.exe instances (PID 6112 and PID 6180) spawning each other",
+      "pid": 6112
+    }
+  ]
+}

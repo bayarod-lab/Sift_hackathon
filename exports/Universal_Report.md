@@ -2,6 +2,7 @@
 **Target Evidence:** `/cases/Rocba-Memory/Rocba-Memory_2.raw`  
 **Status:** Completed  
 **Analyst:** Autonomous Senior DFIR Agent  
+**Intent Verdict:** MALICIOUS  
 
 ---
 
@@ -19,7 +20,7 @@ Using memory alignment and process relationship mapping, the process tree was an
 * **Observation:** A process claiming to be `svchost.exe` was identified as the parent process of `winlogon.exe`.
 * **Pathology:** In a standard Windows boot sequence, `winlogon.exe` is launched by `smss.exe` (Session Manager Subsystem). `svchost.exe` (Generic Host Process for Win32 Services) is launched by `services.exe` much later in the boot cycle. 
 * **Analysis:** A parent-child relationship where `svchost.exe` spawns `winlogon.exe` is highly anomalous and indicative of:
-  1. **Process Masquerading:** A malicious executable named `svchost.exe` running from an unauthorized directory (e.g., `C:\Users\Public\` or `C:\Windows\Temp\`) executing system binaries to elevate privileges or bypass security controls.
+  1. **Process Masquerading:** A malicious executable named `svchost.exe` running from an unauthorized directory (e.g., `C:\Windows\Temp\`) executing system binaries to elevate privileges or bypass security controls.
   2. **Process Hollowing / Injection:** A compromised `svchost.exe` instance being manipulated to spawn system processes to evade detection.
 
 ### Anomaly B: Circular Process Loop (`Teams.exe`)
