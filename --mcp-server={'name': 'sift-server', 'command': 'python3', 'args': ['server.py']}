@@ -1,0 +1,7 @@
+{
+  "tool": "scan_memory",
+  "arguments": {
+    "plugin": "windows.pstree",
+    "target": "/cases/Rocba-Memory/Rocba-Memory_2.raw"
+  }
+}
