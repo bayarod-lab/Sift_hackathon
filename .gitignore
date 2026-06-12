@@ -10,3 +10,10 @@ exports/
 
 # Keep structured ledger files
 !cases/*/triage_ledger.json
+cases/*/extractions/
+cases/*/extractions/
+*.e01
+*.raw
+*.zip
+*.edb
+*.ost
