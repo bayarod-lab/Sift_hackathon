@@ -94,14 +94,13 @@ Analytical Ingestion Rigor: Multi-agent peer reviews successfully map advanced a
 
 Missed Artifacts / False Negatives: During testing against the VIGIA and ROCBA datasets, the agent successfully extracted core intent markers. However, a known limitation is that deeply obfuscated artifacts residing inside fragmented, unallocated registry space (which fls cannot cleanly parse without manual carving) act as false negatives. The architectural guardrails explicitly prevent the LLM from hallucinating these missing gaps, ensuring the final ledger remains strictly tied to verifiable ground truth.
 
-📜 Agent Execution Logs
-All automated workflows enforce an append-only transaction layer. Files compile directly into case folder nodes to protect evidentiary status arrays:
+## 📜 Agent Execution Logs
 
-Primal Action Logs: cases/INC-2026-[CASE_NAME]/actions.jsonl
+All automated workflows enforce an append-only transaction layer. The system ran successfully against the `VIGIA-REAL-001` dataset, and the verified logs are directly accessible below to prove the chain of custody:
 
-Senior Critique Output: cases/INC-2026-[CASE_NAME]/critique.txt
-
-Final Verified Forensic Ledger: cases/INC-2026-[CASE_NAME]/triage_ledger.json
+* **Primal Action Logs:** [cases/INC-2026-case/actions.jsonl](cases/INC-2026-case/actions.jsonl)
+* **Senior Critique Output:** [cases/INC-2026-case/critique.txt](cases/INC-2026-case/critique.txt)
+* **Final Verified Forensic Ledger:** [cases/INC-2026-case/triage_ledger.json](cases/INC-2026-case/triage_ledger.json)
 
 ⚖️ License
 This pipeline framework is open-source distribution software covered under the provisions of the MIT License.
