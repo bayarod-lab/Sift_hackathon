@@ -1,16 +1,27 @@
-Audit Report: INC-2026-VIGIA-REAL-006
+QA AUDIT: INC-2026-VIGIA-REAL-006
 Reviewer: Senior Forensic Analyst
 
-General Assessment:
-The junior analyst has successfully mapped all artifacts from the provided facts.json to the triage_ledger.json. The categorization is technically accurate, and the risk prioritization aligns with standard forensic triage practices.
+1. FACTUAL ACCURACY:
+The summary is generally accurate, but the ledger conflates the "Return-Path" with the "origin of the spoofed email." While the Return-Path (simsong@xy.dreamhostps.com) is a strong indicator of the mail server used, it is not necessarily the "origin" of the attacker, but rather the infrastructure used to relay the spoofed message. The ledger correctly identifies the exfiltration destination.
 
-Specific Findings:
-1. Network Tools (ipconfig.exe/net.exe): The High priority and 60 risk score are justified. The deletion of these binaries is a significant indicator of anti-forensics/reconnaissance.
-2. Email Headers: The Medium priority is appropriate.
-3. AIM6: The assessment of legacy software with suspicious toolbars is accurate.
+2. ROLE ASSIGNMENT:
+The roles are well-defined. Victim (CFO Jean Jones) and Actor (unknown, using spoofed identity) are clearly distinguished. No issues with conflated identities.
 
-Recommendations for Improvement:
-- Validation Steps: The 'recommended_validation' fields are currently too generic.
-  - For 'Network Tools', explicitly mention checking the MFT/UsnJrnl for deletion timestamps and Prefetch/Shimcache for execution history, rather than just 'event logs'.
-  - For 'Email Headers', suggest pivoting to browser history or mail client artifacts to determine if these were used for exfiltration.
-- Overall: The ledger is technically sound and ready for the next phase of investigation.
+3. MITRE VALIDATION:
+- T1566.002 (Spearphishing Link/Service) is supported by the Reply-To manipulation.
+- T1567 (Exfiltration Over Web Service) is supported by the use of Gmail.
+- T1070.004 (File Deletion) is cited in the ledger but not explicitly proven by the artifacts provided. The facts mention "Deletion of system binaries" as an anomaly, but the ledger does not provide evidence that the attacker performed this action on the victim's machine. This TTP mapping is weak and potentially unsupported.
+
+4. SEMANTIC BIAS:
+The analysis is objective. There is no evidence of bias or mislabeling of policy violations as malicious activity. The incident is clearly malicious.
+
+5. NULL HYPOTHESIS:
+The null hypothesis is well-constructed and effectively refuted by the header analysis (Return-Path mismatch and Reply-To manipulation).
+
+6. IOC COMPLETENESS:
+The IOC list is missing the Return-Path domain (dreamhostps.com) as a distinct network IOC. While the full email address is listed, the infrastructure domain should be tracked separately for broader hunting.
+
+RECOMMENDATIONS:
+- Remove or substantiate T1070.004 (File Deletion). If there is no evidence of the attacker deleting files, remove this mapping.
+- Add 'dreamhostps.com' to the IOC list as a suspicious infrastructure domain.
+- Clarify in the summary that the Return-Path indicates the relay infrastructure, not necessarily the attacker's origin.

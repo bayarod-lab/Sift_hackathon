@@ -1,0 +1,6 @@
+Timestamp: Sun Jun 14 13:08:00 UTC 2026
+Source File: /mnt/hgfs/Vm shared folder/VANKO/surface_physical.E01
+Hash Algorithm: SHA256
+Acquisition Hash: 0a44ad8d57bad44eb40a59bdaa8110b79ac019a791b8fd388f6efe09c7aa3b1c
+Hash Source: E01 embedded acquisition hash (not independently recalculated)
+Scenario File Integrated: Yes

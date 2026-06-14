@@ -1,5 +1,5 @@
-{"timestamp": "2026-06-13T06:02:26Z", "actor": "SYSTEM", "action": "Automated pipeline extracted /mnt/hgfs/Vm shared folder/rocba-cdrive.e01 to cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt"}
-{"timestamp": "2026-06-13T06:02:43Z", "actor": "AI_AGENT", "action": "Completed Pass 1: Fact Extraction."}
-{"timestamp": "2026-06-13T06:02:49Z", "actor": "TOOL_EXEC", "action": "Executed: python3 verify_schema.py cases/INC-2026-rocba-cdrive/triage_ledger.json"}
-{"timestamp": "2026-06-13T06:03:00Z", "actor": "TOOL_EXEC", "action": "Executed: python3 verify_schema.py cases/INC-2026-rocba-cdrive/triage_ledger.json"}
-{"timestamp": "2026-06-13T06:03:18Z", "actor": "TOOL_EXEC", "action": "Executed: python3 verify_schema.py cases/INC-2026-rocba-cdrive/triage_ledger.json"}
+{"timestamp": "2026-06-14T12:38:15Z", "actor": "TOOL_EXEC", "action": "Executed: Streaming fls extraction with dynamic offsets"}
+{"timestamp": "2026-06-14T12:38:15Z", "actor": "SYSTEM", "action": "Automated pipeline extracted /home/sansforensics/Desktop/rocba-cdrive.e01 to cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt"}
+{"timestamp": "2026-06-14T12:38:30Z", "actor": "AI_AGENT", "action": "Completed Pass 1: Fact & IOC Extraction."}
+{"timestamp": "2026-06-14T12:38:47Z", "actor": "AI_AGENT", "action": "Completed Pass 1.C: Timeline Reconstruction."}
+{"timestamp": "2026-06-14T12:39:06Z", "actor": "AI_AGENT", "action": "Successfully integrated peer review feedback."}

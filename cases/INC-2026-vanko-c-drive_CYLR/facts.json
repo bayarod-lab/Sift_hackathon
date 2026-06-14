@@ -1,72 +1,162 @@
 [
   {
-    "artifact_type": "executable",
-    "artifact_name": "WhatsApp.exe",
-    "artifact_value": "WhatsApp.exe",
-    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/WhatsApp/app-0.2.936/WhatsApp.exe",
-    "confidence": "high"
+    "artifact_type": "Account Name",
+    "artifact_name": "User Account",
+    "artifact_value": "defaultprinter",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/defaultprinter/NTUSER.DAT.LOG1",
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "executable",
-    "artifact_name": "squirrel.exe",
-    "artifact_value": "squirrel.exe",
-    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/WhatsApp/app-0.2.936/squirrel.exe",
-    "confidence": "high"
+    "artifact_type": "Account Name",
+    "artifact_name": "User Account",
+    "artifact_value": "PC User",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/NTUSER.DAT.LOG1",
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "executable",
-    "artifact_name": "Update.exe",
-    "artifact_value": "Update.exe",
-    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/WhatsApp/Update.exe",
-    "confidence": "high"
-  },
-  {
-    "artifact_type": "executable",
-    "artifact_name": "WhatsApp.exe",
+    "artifact_type": "Execution Path",
+    "artifact_name": "Suspicious Executable",
     "artifact_value": "WhatsApp.exe",
     "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/WhatsApp/app-0.2.1061/WhatsApp.exe",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "executable",
-    "artifact_name": "software_reporter_tool.exe",
+    "artifact_type": "Execution Path",
+    "artifact_name": "System Utility",
     "artifact_value": "software_reporter_tool.exe",
     "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/SwReporter/17.96.0/software_reporter_tool.exe",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "executable",
-    "artifact_name": "pepflashplayer.dll",
-    "artifact_value": "pepflashplayer.dll",
-    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/PepperFlash/25.0.0.127/pepflashplayer.dll",
-    "confidence": "high"
+    "artifact_type": "Domain",
+    "artifact_name": "Infrastructure Domain",
+    "artifact_value": "www.google.com",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/Default/IndexedDB/https_www.google.com_0.indexeddb.leveldb/LOG",
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "executable",
-    "artifact_name": "pnacl_public_x86_64_pnacl_llc_nexe",
-    "artifact_value": "pnacl_public_x86_64_pnacl_llc_nexe",
-    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/pnacl/0.57.44.2492/_platform_specific/x86_64/pnacl_public_x86_64_pnacl_llc_nexe",
-    "confidence": "high"
+    "artifact_type": "Domain",
+    "artifact_name": "Infrastructure Domain",
+    "artifact_value": "web.whatsapp.com",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/LOG",
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "executable",
-    "artifact_name": "pnacl_public_x86_64_pnacl_sz_nexe",
-    "artifact_value": "pnacl_public_x86_64_pnacl_sz_nexe",
-    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/pnacl/0.57.44.2492/_platform_specific/x86_64/pnacl_public_x86_64_pnacl_sz_nexe",
-    "confidence": "high"
+    "artifact_type": "Domain",
+    "artifact_name": "Infrastructure Domain",
+    "artifact_value": "twitter.com",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/Default/IndexedDB/https_twitter.com_0.indexeddb.leveldb/LOG",
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "executable",
-    "artifact_name": "pnacl_public_x86_64_ld_nexe",
-    "artifact_value": "pnacl_public_x86_64_ld_nexe",
-    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/pnacl/0.57.44.2492/_platform_specific/x86_64/pnacl_public_x86_64_ld_nexe",
-    "confidence": "high"
+    "artifact_type": "Domain",
+    "artifact_name": "Infrastructure Domain",
+    "artifact_value": "www.facebook.com",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/Default/IndexedDB/https_www.facebook.com_0.indexeddb.leveldb/LOG",
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "shortcut",
-    "artifact_name": "smallftpd-1.0.3-fix.lnk",
-    "artifact_value": "smallftpd-1.0.3-fix.lnk",
-    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/defaultprinter/AppData/Roaming/Microsoft/Windows/Recent/smallftpd-1.0.3-fix.lnk",
-    "confidence": "medium"
+    "artifact_type": "Domain",
+    "artifact_name": "Infrastructure Domain",
+    "artifact_value": "drive.google.com",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/Default/IndexedDB/https_drive.google.com_0.indexeddb.leveldb/LOG",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Domain",
+    "artifact_name": "Infrastructure Domain",
+    "artifact_value": "blogs.technet.microsoft.com",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/Default/Local Storage/https_blogs.technet.microsoft.com_0.localstorage",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "File Artifact",
+    "artifact_name": "Browser Credential Store",
+    "artifact_value": "Login Data",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/Default/Login Data",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "File Artifact",
+    "artifact_name": "Browser Database",
+    "artifact_value": "Databases.db",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Google/Chrome/User Data/Default/databases/Databases.db",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "File Artifact",
+    "artifact_name": "Registry Hive",
+    "artifact_value": "NTUSER.DAT",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/NTUSER.DAT.LOG1",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "File Artifact",
+    "artifact_name": "Registry Hive",
+    "artifact_value": "Usrclass.dat",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Local/Microsoft/Windows/Usrclass.dat.LOG1",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "File Artifact",
+    "artifact_name": "Suspicious Tool",
+    "artifact_value": "SDelete.zip",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Roaming/Microsoft/Windows/Recent/SDelete.zip.lnk",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "File Artifact",
+    "artifact_name": "Suspicious Tool",
+    "artifact_value": "Tor Browser",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Roaming/Microsoft/Windows/Recent/Tor Browser.lnk",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "File Artifact",
+    "artifact_name": "Forensic Tool",
+    "artifact_value": "FTK_IMAGER_LITE.zip",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Roaming/Microsoft/Windows/Recent/FTK_IMAGER_LITE.zip.lnk",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "File Artifact",
+    "artifact_name": "Sensitive File",
+    "artifact_value": "BitLocker Recovery Key",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Roaming/Microsoft/Windows/Recent/BitLocker Recovery Key 78E26069-03C3-46A7-9E8A-F366D2D9C477.TXT.lnk",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "File Artifact",
+    "artifact_name": "Suspicious Document",
+    "artifact_value": "Research to Weaponize the Ion Thruster.docx",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Roaming/Microsoft/Windows/Recent/Research to Weaponize the Ion Thruster.docx.lnk",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "File Artifact",
+    "artifact_name": "Suspicious Document",
+    "artifact_value": "Malformation and Mutation of the Endangered Chinese Sturgeon.docx",
+    "source_file": "cases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage/vanko-c-drive.CYLR/G/Users/PC User/AppData/Roaming/Microsoft/Office/Recent/Malformation and Mutation of the Endangered Chinese Sturgeon - τò╕σ╜óσÆîτÇòΦç¿µ╗àτ╡òτÜäΣ╕¡σ£ïΘ▒ÿΣ╕¡ΦÅ»Θ▒ÿτÜäτ¬üΦ«è.docx.LNK",
+    "confidence": "High",
+    "iocs": []
   }
 ]

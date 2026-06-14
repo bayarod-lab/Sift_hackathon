@@ -1,0 +1,108 @@
+[
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Incident Type",
+    "artifact_value": "insider_threat_exfiltration",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": []
+  },
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Case Description",
+    "artifact_value": "Sr. Informant, a technology development manager at OOO company, received an offer from a conspirator to leak confidential information about new technologies. He used email, Google Drive, USB, and CD-R to exfiltrate data while applying anti-forensic techniques.",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "10.11.11.129",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "10.11.11.129"
+    ]
+  },
+  {
+    "artifact_type": "auth_log",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Logon activity outside permitted hours (16:00 is the policy limit) | Quick logoff pattern on March 24 following exfiltration activity",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Observed Email",
+    "artifact_value": "spy.conspirator@nist.gov",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "spy.conspirator@nist.gov"
+    ]
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Observed Email",
+    "artifact_value": "iaman.informant@nist.gov",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "iaman.informant@nist.gov"
+    ]
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Emails from an external domain (nist.gov) requesting confidential data | Conspiratorial language ('conformal', 'I need more data')",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "file_metadata",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Deliberate extension changes to conceal actual file content | The files are classified as confidential under company policy",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Observed Email",
+    "artifact_value": "iaman.informant.personal@gmail.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "iaman.informant.personal@gmail.com"
+    ]
+  },
+  {
+    "artifact_type": "bash_history",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Use of personal Gmail account to exfiltrate corporate data | Installation of anti-forensic tools (CCleaner, Eraser) after exfiltration",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "10.11.11.128",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "10.11.11.128"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Access to secured network drive followed by local file copy | Immediate disconnection after copying files indicates selective collection pattern",
+    "source_file": "cases/INC-2026-VIGIA-REAL-002/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  }
+]

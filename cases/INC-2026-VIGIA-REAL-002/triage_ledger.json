@@ -1,0 +1,110 @@
+{
+  "case_id": "VIGIA-REAL-002",
+  "target": "Sr. Informant (Technology Development Manager)",
+  "intent_verdict": "Malicious",
+  "summary": "The subject, a technology development manager, engaged in unauthorized exfiltration of confidential company data. Evidence includes communication with an external conspirator (spy.conspirator@nist.gov), use of personal email (iaman.informant.personal@gmail.com) for data transfer, and the installation of anti-forensic tools (CCleaner, Eraser) to conceal activity. The subject also performed unauthorized access to secured network drives and exhibited anomalous logon patterns. EVIDENCE COVERAGE MATRIX: [Filesystem: YES] [Registry: NO] [EventLogs: YES] [NetworkLogs: YES]",
+  "null_hypothesis": "The subject was attempting to bypass DLP controls for personal convenience rather than malicious exfiltration, and the anti-forensic tools were used to hide personal browsing history rather than corporate data destruction.",
+  "case_confidence": 95,
+  "mitre_ttps": [
+    "T1048 (Exfiltration Over Alternative Protocol)",
+    "T1078 (Valid Accounts)",
+    "T1485 (Data Destruction)",
+    "T1567.002 (Exfiltration Over Web Service)"
+  ],
+  "artifacts": [
+    {
+      "name": "External Conspirator Email",
+      "type": "email_header",
+      "value": "spy.conspirator@nist.gov",
+      "description": "External email address communicating with the subject regarding confidential data.",
+      "presence_confidence": "High",
+      "execution_confidence": "High",
+      "intent_confidence": "High",
+      "recommended_validation": "Cross-reference with HR records and external threat intelligence.",
+      "risk_score": 90,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "spy.conspirator@nist.gov"
+      ]
+    },
+    {
+      "name": "Personal Exfiltration Account",
+      "type": "email_header",
+      "value": "iaman.informant.personal@gmail.com",
+      "description": "Personal Gmail account used to exfiltrate corporate data.",
+      "presence_confidence": "High",
+      "execution_confidence": "High",
+      "intent_confidence": "High",
+      "recommended_validation": "Audit DLP logs for attachments sent from this account.",
+      "risk_score": 95,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "iaman.informant.personal@gmail.com"
+      ]
+    },
+    {
+      "name": "Anti-Forensic Tools",
+      "type": "bash_history",
+      "value": "CCleaner, Eraser",
+      "description": "Installation of tools used to wipe evidence after exfiltration.",
+      "presence_confidence": "High",
+      "execution_confidence": "High",
+      "intent_confidence": "High",
+      "recommended_validation": "Review installation logs and file system timestamps.",
+      "risk_score": 85,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": []
+    },
+    {
+      "name": "Anomalous Network Access",
+      "type": "network_flow",
+      "value": "10.11.11.129",
+      "description": "Access to secured network drive followed by immediate disconnection.",
+      "presence_confidence": "High",
+      "execution_confidence": "Medium",
+      "intent_confidence": "High",
+      "recommended_validation": "Review firewall and VPN logs for session duration.",
+      "risk_score": 75,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "10.11.11.129"
+      ]
+    },
+    {
+      "name": "Observed Email",
+      "type": "email_header",
+      "value": "iaman.informant@nist.gov",
+      "description": "Recovered IOC.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "None",
+      "recommended_validation": "Corroborate telemetry.",
+      "risk_score": 40,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "iaman.informant@nist.gov"
+      ]
+    },
+    {
+      "name": "IP Address",
+      "type": "network_flow",
+      "value": "10.11.11.128",
+      "description": "Recovered IOC.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "None",
+      "recommended_validation": "Corroborate telemetry.",
+      "risk_score": 50,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "10.11.11.128"
+      ]
+    }
+  ]
+}

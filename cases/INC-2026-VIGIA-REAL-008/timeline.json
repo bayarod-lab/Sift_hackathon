@@ -1,0 +1,37 @@
+[
+  {
+    "sequence": 1,
+    "event_description": "Initial execution of the malicious process masquerading as a legitimate Adobe application (reader_sl.exe).",
+    "artifacts_involved": ["reader_sl.exe"],
+    "mitre_ttp": "T1036",
+    "confidence": "High"
+  },
+  {
+    "sequence": 2,
+    "event_description": "Process hollowing of explorer.exe by the malicious reader_sl.exe process to hide activity.",
+    "artifacts_involved": ["reader_sl.exe", "explorer.exe"],
+    "mitre_ttp": "T1055",
+    "confidence": "High"
+  },
+  {
+    "sequence": 3,
+    "event_description": "Creation of mutex '746bbf3569adEncrypt' to manage malicious cryptographic activity.",
+    "artifacts_involved": ["746bbf3569adEncrypt"],
+    "mitre_ttp": "",
+    "confidence": "Medium"
+  },
+  {
+    "sequence": 4,
+    "event_description": "Establishment of C2 communication channels to malicious infrastructure and potential use of wuauclt.exe for network activity.",
+    "artifacts_involved": ["41.168.5.140", "125.19.103.198", "188.40.0.138", "190.81.107.70", "85.214.204.32", "210.56.23.100", "211.44.250.173", "wuauclt.exe"],
+    "mitre_ttp": "T1071.001",
+    "confidence": "High"
+  },
+  {
+    "sequence": 5,
+    "event_description": "Web injection into explorer.exe to facilitate credential theft from banking pages.",
+    "artifacts_involved": ["explorer.exe"],
+    "mitre_ttp": "T1185",
+    "confidence": "High"
+  }
+]

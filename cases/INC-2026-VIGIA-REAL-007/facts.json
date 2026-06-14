@@ -1,0 +1,144 @@
+[
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Incident Type",
+    "artifact_value": "network_harassment_attribution",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": []
+  },
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Case Description",
+    "artifact_value": "Chemistry professor Lily Tuckrige at Nitroba State University received harassment emails. The captured network traffic (~60MB pcap) revealed the perpetrator used Gmail webmail from an internal dormitory IP address, sending cookies in plaintext over HTTP.",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "External IP",
+    "artifact_value": "140.247.62.34",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "140.247.62.34"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Internal IP",
+    "artifact_value": "192.168.15.4",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "192.168.15.4"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "MAC Address",
+    "artifact_value": "00:17:f2:e2:c0:ce",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "00:17:f2:e2:c0:ce"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "willselfdestruct.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "willselfdestruct.com"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "User Agent",
+    "artifact_value": "Firefox 2.0.0.16 / Mac OS X",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "User Agent",
+    "artifact_value": "Safari 3.1.2 / Mac OS X",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "User Agent",
+    "artifact_value": "IE6/WinXP SP2",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Gmail traffic with cookies sent in plaintext over HTTP | Use of willselfdestruct.com service to send anonymous harassment email",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Suspected Actor Email",
+    "artifact_value": "badguy@hotmail.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "badguy@hotmail.com"
+    ]
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Suspected Actor Email",
+    "artifact_value": "jcoachj@gmail.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "jcoachj@gmail.com"
+    ]
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Suspected Actor Email",
+    "artifact_value": "jcoach@gmail.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "jcoach@gmail.com"
+    ]
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Explicit threat message sent through self-destructing service | Gmail account jcoach@gmail.com was identified via plaintext cookies in the pcap",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "identity_attribution",
+    "artifact_name": "Attributed Human Actor",
+    "artifact_value": "Johnny Coach",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": []
+  },
+  {
+    "artifact_type": "file_metadata",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Password-less WiFi router allows anonymous and untraceable access | Combination of university Ethernet + unsecured WiFi complicates attribution",
+    "source_file": "cases/INC-2026-VIGIA-REAL-007/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "sequence": 1,
+    "event_description": "Suspect performs reconnaissance on target company employees to identify potential targets for espionage.",
+    "artifacts_involved": ["Forensic Anomaly"],
+    "mitre_ttp": "T1592",
+    "confidence": "Medium"
+  },
+  {
+    "sequence": 2,
+    "event_description": "Malware is installed on the target device, establishing a connection to external server 50.56.29.109 for command and control.",
+    "artifacts_involved": ["External IP", "Forensic Anomaly"],
+    "mitre_ttp": "T1071",
+    "confidence": "High"
+  },
+  {
+    "sequence": 3,
+    "event_description": "Suspect systematically accesses and exfiltrates confidential SwiftLogic Inc. documents to the external server.",
+    "artifacts_involved": ["Confidential Documents", "Forensic Anomaly"],
+    "mitre_ttp": "T1567",
+    "confidence": "High"
+  },
+  {
+    "sequence": 4,
+    "event_description": "Suspect initiates negotiations for the sale of stolen intellectual property via SMS and email.",
+    "artifacts_involved": ["Forensic Anomaly"],
+    "mitre_ttp": "",
+    "confidence": "High"
+  },
+  {
+    "sequence": 5,
+    "event_description": "Suspect attempts to renegotiate the price of the stolen intellectual property, leading to a conflict.",
+    "artifacts_involved": ["Forensic Anomaly"],
+    "mitre_ttp": "",
+    "confidence": "Medium"
+  },
+  {
+    "sequence": 6,
+    "event_description": "Suspect is found deceased under violent circumstances following the failed negotiation attempt.",
+    "artifacts_involved": ["Forensic Anomaly"],
+    "mitre_ttp": "",
+    "confidence": "High"
+  }
+]

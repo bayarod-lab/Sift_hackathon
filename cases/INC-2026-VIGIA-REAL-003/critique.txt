@@ -1,0 +1,26 @@
+QA AUDIT REPORT: INC-2026-VIGIA-REAL-003
+REVIEWER: Senior Forensic Analyst
+DATE: 2023-10-27
+
+1. FACTUAL ACCURACY
+The technical assessment of the compromise (SQLi -> Webshell -> Persistence) is accurate and supported by the provided facts. The identification of the source IP (192.168.56.102) as a Kali Linux VM is a critical observation that was correctly captured.
+
+2. ROLE ASSIGNMENT
+The analyst correctly identified the source of the activity. However, the ledger fails to explicitly define the "Victim" role. While the target is implied as the Windows Server 2008 host, it should be explicitly stated in the ledger to maintain formal structure. Furthermore, the attribution of "Malicious" is technically correct regarding the *actions* (unauthorized persistence), but the analyst should distinguish between a "Malicious Threat Actor" and an "Unauthorized Lab User/Student." The evidence strongly suggests a student or researcher overstepping the bounds of a DVWA lab, not a sophisticated adversary.
+
+3. MITRE VALIDATION
+The mapping of TTPs (T1136.001, T1190, T1505.003, T1562.004) is accurate and well-supported by the artifacts. No changes required here.
+
+4. SEMANTIC BIAS
+The analyst displays a slight bias by labeling the activity "Malicious" with 95% confidence without qualifying the environment. Given the presence of DVWA and the default VirtualBox network range (192.168.56.x), the activity is almost certainly an unauthorized training exercise. The ledger should reflect this context to avoid misrepresenting the threat level to stakeholders.
+
+5. NULL HYPOTHESIS
+The null hypothesis is well-constructed, but the refutation is slightly flawed. The creation of persistent accounts and firewall modifications does not inherently disprove a training exercise; it only proves that the activity exceeded the scope of *authorized* training. The refutation should be updated to reflect that the activity is "Unauthorized" rather than "Malicious" in the traditional sense of an external threat actor.
+
+6. IOC COMPLETENESS
+The ledger is missing a key IOC: the specific User-Agent string "ies/sqli" identified in the facts. This is a high-fidelity indicator for hunting this specific activity across other logs and should be added to the artifact list.
+
+RECOMMENDATIONS:
+- Update the "Malicious" verdict to "Unauthorized/Policy Violation" to better reflect the likely lab-based nature of the incident.
+- Add the "ies/sqli" User-Agent to the artifact list.
+- Explicitly define the Victim host in the ledger.

@@ -1,0 +1,162 @@
+[
+  {
+    "artifact_type": "Account Name",
+    "artifact_name": "User Account",
+    "artifact_value": "defaultprinter",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "ProgramData/Apple/Installer Cache/Apple Software Update 2.2.0.150/AppleSoftwareUpdate.msi",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "ProgramData/Microsoft/Windows/AppRepository/Microsoft.SkypeApp_3.2.1.0_x86__kzf8qxf38zg5c",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "ProgramData/Skype/{24991BA0-F0EE-44AD-9CC8-5EC50AECF6B7}/Skype.msi",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Dropbox/instance1/config.db",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Google/Chrome/User Data/Default/Extensions/aapocclcgogkmnckokdopfmhonfmgoek/0.9_0/main.js",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Google/Chrome/User Data/Default/Extensions/aohghmighlieiainnegkcijnfilokake/0.9_0/main.js",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Google/Chrome/User Data/Default/Extensions/apdfllckaahabafndbhieahigkjlhalf/14.1_0/manifest.json",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Google/Chrome/User Data/Default/Extensions/blpcfgokakmgnkcojhhkbfbldkacnbeo/4.2.8_0/manifest.json",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Google/Chrome/User Data/Default/Extensions/felcaaldnbdncclmgdcncolpebgiejap/1.1_0/main.js",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Google/Chrome/User Data/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.4_0/eventpage_bin_prod.js",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Google/Chrome/User Data/Default/Extensions/nmmhkkegccagdldgiimedpiccmgmieda/1.0.0.0_0/craw_background.js",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Google/Chrome/User Data/Default/Extensions/pjkljhegncpnkpknbcohdijeoejaedia/8.1_0/manifest.json",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Microsoft/OneDrive/17.3.6390.0509/OneDrive.exe",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Packages/9E2F88E3.Twitter_wgeqdkkx372wm/9E2F88E3.Twitter_5.1.2.0_x86__wgeqdkkx372wm/ActivationStore/ActivationStore.dat",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Packages/Drawboard.DrawboardPDFforSurface_gqbn7fs4pywxm/Drawboard.DrawboardPDFforSurface_5.0.40.0_x64__gqbn7fs4pywxm/ActivationStore/ActivationStore.dat",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Packages/Flipboard.Flipboard_3f5azkryzdbc4/Flipboard.Flipboard_2.1.1.0_neutral__3f5azkryzdbc4/ActivationStore/ActivationStore.dat",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Packages/king.com.CandyCrushSodaSaga_kgqvnymyfvs32/king.com.CandyCrushSodaSaga_1.68.500.0_x86__kgqvnymyfvs32/ActivationStore/ActivationStore.dat",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Packages/Microsoft.3DBuilder_8wekyb3d8bbwe/Microsoft.3DBuilder_11.1.8.0_x64__8wekyb3d8bbwe/ActivationStore/ActivationStore.dat",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Execution Path",
+    "artifact_name": "Application Path",
+    "artifact_value": "Users/defaultprinter/AppData/Local/Packages/Microsoft.WindowsCalculator_8wekyb3d8bbwe/Microsoft.WindowsCalculator_10.1601.49020.0_x64__8wekyb3d8bbwe/ActivationStore/ActivationStore.dat",
+    "source_file": "cases/INC-2026-surface_physical/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  }
+]

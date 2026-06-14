@@ -1,0 +1,34 @@
+[
+  {
+    "sequence": 1,
+    "event_description": "User account 'fredr' identified on the system, establishing the primary user context for the workstation.",
+    "artifacts_involved": [
+      "User Account"
+    ],
+    "mitre_ttp": "",
+    "confidence": "High"
+  },
+  {
+    "sequence": 2,
+    "event_description": "Installation of standard productivity and communication applications (Skype, Slack, Office, iCloud) consistent with a standard user workstation profile.",
+    "artifacts_involved": [
+      "Communication App",
+      "Cloud Storage App",
+      "Productivity App"
+    ],
+    "mitre_ttp": "",
+    "confidence": "High"
+  },
+  {
+    "sequence": 3,
+    "event_description": "Presence of system and utility applications (HPPrinterControl, Windows Photos, SurfaceHub) verified, confirming the system is a standard Windows environment.",
+    "artifacts_involved": [
+      "Utility App",
+      "Media App",
+      "Hardware App",
+      "System App"
+    ],
+    "mitre_ttp": "",
+    "confidence": "High"
+  }
+]

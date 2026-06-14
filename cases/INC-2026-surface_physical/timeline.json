@@ -1,0 +1,30 @@
+[
+  {
+    "sequence": 1,
+    "event_description": "Presence of standard application suite installers and configuration files identified in ProgramData, indicating baseline system provisioning.",
+    "artifacts_involved": ["Application Path"],
+    "mitre_ttp": "",
+    "confidence": "High"
+  },
+  {
+    "sequence": 2,
+    "event_description": "Presence of Dropbox configuration database in user profile, indicating user staged or configured cloud storage synchronization.",
+    "artifacts_involved": ["Application Path"],
+    "mitre_ttp": "",
+    "confidence": "Medium"
+  },
+  {
+    "sequence": 3,
+    "event_description": "Presence of multiple Chrome extension manifests and scripts in user profile, indicating user staged or installed browser extensions.",
+    "artifacts_involved": ["Application Path"],
+    "mitre_ttp": "T1176",
+    "confidence": "High"
+  },
+  {
+    "sequence": 4,
+    "event_description": "Presence of Windows Store application activation stores for various packages, indicating user staged or accessed pre-installed or store-acquired applications.",
+    "artifacts_involved": ["Application Path"],
+    "mitre_ttp": "",
+    "confidence": "High"
+  }
+]

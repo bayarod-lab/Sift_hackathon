@@ -1,0 +1,44 @@
+[
+  {
+    "sequence": 1,
+    "event_description": "Attacker initiates spear-phishing campaign by sending spoofed email from alison@m57.biz to CFO Jean Jones, utilizing a malicious Return-Path (simsong@xy.dreamhostps.com) to bypass standard filters.",
+    "artifacts_involved": ["Observed Email", "Observed Email", "Observed Email"],
+    "mitre_ttp": "T1566.002",
+    "confidence": "High"
+  },
+  {
+    "sequence": 2,
+    "event_description": "CFO Jean Jones receives the spoofed email and, believing it to be a legitimate request from the President, prepares the requested confidential employee data.",
+    "artifacts_involved": ["Case Description", "Observed Email"],
+    "mitre_ttp": "",
+    "confidence": "High"
+  },
+  {
+    "sequence": 3,
+    "event_description": "Confidential file containing SSNs and salaries is created on the victim's Desktop shortly before exfiltration.",
+    "artifacts_involved": ["Forensic Anomaly"],
+    "mitre_ttp": "",
+    "confidence": "Medium"
+  },
+  {
+    "sequence": 4,
+    "event_description": "Attacker manipulates the Reply-To header to redirect the response to an external Gmail account (tuckergorge@gmail.com), ensuring the exfiltrated data bypasses corporate monitoring.",
+    "artifacts_involved": ["Forensic Anomaly", "Observed Email"],
+    "mitre_ttp": "T1567",
+    "confidence": "High"
+  },
+  {
+    "sequence": 5,
+    "event_description": "CFO Jean Jones sends the confidential file to the attacker, completing the exfiltration process.",
+    "artifacts_involved": ["Case Description", "Forensic Anomaly"],
+    "mitre_ttp": "T1567",
+    "confidence": "High"
+  },
+  {
+    "sequence": 6,
+    "event_description": "Attacker confirms receipt of data; subsequent investigation reveals anti-forensic activity including deletion of system binaries and use of fake Microsoft prompts.",
+    "artifacts_involved": ["Forensic Anomaly", "Forensic Anomaly"],
+    "mitre_ttp": "T1070.004",
+    "confidence": "Medium"
+  }
+]

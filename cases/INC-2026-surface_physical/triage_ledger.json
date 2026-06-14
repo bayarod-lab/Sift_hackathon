@@ -1,0 +1,48 @@
+{
+  "case_id": "surface_physical",
+  "target": "defaultprinter",
+  "intent_verdict": "Inconclusive",
+  "summary": "Analysis of filesystem metadata indicates standard user activity and application usage. Chrome extensions identified require further validation against threat intelligence. Network telemetry was unavailable for analysis. Infrastructure: Not Observed. EVIDENCE COVERAGE MATRIX: [Filesystem: YES] [Registry: NO] [EventLogs: NO] [NetworkLogs: NO]",
+  "null_hypothesis": "The system is a standard workstation used for general productivity. The extensions are legitimate productivity tools, but require verification.",
+  "case_confidence": 70,
+  "mitre_ttps": [],
+  "artifacts": [
+    {
+      "name": "Chrome Extensions",
+      "type": "Browser Extension",
+      "value": "Multiple IDs (e.g., aapocclcgogkmnckokdopfmhonfmgoek, aohghmighlieiainnegkcijnfilokake, apdfllckaahabafndbhieahigkjlhalf, blpcfgokakmgnkcojhhkbfbldkacnbeo, felcaaldnbdncclmgdcncolpebgiejap, ghbmnnjooekpmoecnnnilnnbdlolhkhi, nmmhkkegccagdldgiimedpiccmgmieda, pjkljhegncpnkpknbcohdijeoejaedia)",
+      "description": "Browser extensions found in user profile. IDs require verification against threat intelligence.",
+      "presence_confidence": "High",
+      "execution_confidence": "Low",
+      "intent_confidence": "Low",
+      "recommended_validation": "Verify ID against Threat Intelligence.",
+      "risk_score": 30,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "aapocclcgogkmnckokdopfmhonfmgoek",
+        "aohghmighlieiainnegkcijnfilokake",
+        "apdfllckaahabafndbhieahigkjlhalf",
+        "blpcfgokakmgnkcojhhkbfbldkacnbeo",
+        "felcaaldnbdncclmgdcncolpebgiejap",
+        "ghbmnnjooekpmoecnnnilnnbdlolhkhi",
+        "nmmhkkegccagdldgiimedpiccmgmieda",
+        "pjkljhegncpnkpknbcohdijeoejaedia"
+      ]
+    },
+    {
+      "name": "Application Suite",
+      "type": "Execution Path",
+      "value": "Various (Skype, OneDrive, Apple Software Update, Windows Store Apps)",
+      "description": "Standard installed applications and Windows Store packages.",
+      "presence_confidence": "High",
+      "execution_confidence": "Low",
+      "intent_confidence": "Low",
+      "recommended_validation": "Verify against gold image baseline.",
+      "risk_score": 0,
+      "priority": "Low",
+      "review_status": "pending",
+      "iocs": []
+    }
+  ]
+}

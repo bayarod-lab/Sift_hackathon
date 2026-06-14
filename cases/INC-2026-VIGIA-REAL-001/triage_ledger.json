@@ -1,0 +1,172 @@
+{
+  "case_id": "VIGIA-REAL-001",
+  "target": "Greg Schardt (Mr. Evil)",
+  "intent_verdict": "Malicious",
+  "summary": "The investigation confirms unauthorized wireless network reconnaissance (war driving) and potential for credential interception associated with suspect Greg Schardt (alias 'Mr. Evil'). Evidence includes the recovery of a Dell CPi laptop equipped with a wireless PCMCIA card and a homemade antenna, alongside forensic artifacts such as NetStumbler executables in the Recycle Bin and participation in known hacking channels. EVIDENCE COVERAGE MATRIX: [Filesystem: YES] [Registry: YES] [EventLogs: NO] [NetworkLogs: YES]",
+  "null_hypothesis": "The suspect claims the laptop was used for legitimate network security research and testing of public WiFi vulnerabilities, and that the 'Mr. Evil' alias is a persona for online gaming. While the presence of NetStumbler is indicative of malicious intent, there is no evidence of actual data exfiltration or successful credential theft, necessitating a more cautious interpretation of the suspect's activities.",
+  "case_confidence": 90,
+  "mitre_ttps": [
+    "T1590",
+    "T1592"
+  ],
+  "artifacts": [
+    {
+      "name": "NetStumbler Executable",
+      "type": "file_metadata",
+      "value": "aee4fcd9301c03b3b054623ca261959a",
+      "description": "NetStumbler war driving tool found in Recycle Bin.",
+      "presence_confidence": "High",
+      "execution_confidence": "High",
+      "intent_confidence": "High",
+      "recommended_validation": "Verify hash against known malicious tool databases.",
+      "risk_score": 95,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "aee4fcd9301c03b3b054623ca261959a"
+      ]
+    },
+    {
+      "name": "Suspect Email",
+      "type": "email_header",
+      "value": "mrevilrulez@yahoo.com",
+      "description": "Primary email address linked to suspect alias.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "Medium",
+      "recommended_validation": "Cross-reference with ISP logs for account activity.",
+      "risk_score": 60,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "mrevilrulez@yahoo.com"
+      ]
+    },
+    {
+      "name": "Hacking IRC Channels",
+      "type": "network_flow",
+      "value": "chataholics.undernet",
+      "description": "Communication Infrastructure (Hacking Channels).",
+      "presence_confidence": "High",
+      "execution_confidence": "Medium",
+      "intent_confidence": "High",
+      "recommended_validation": "Analyze connection logs for duration and frequency.",
+      "risk_score": 80,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "chataholics.undernet",
+        "elite.hackers.undernet",
+        "evilfork.efnet"
+      ]
+    },
+    {
+      "name": "Hostname",
+      "type": "registry",
+      "value": "N-1A9ODN6ZXK4LQ",
+      "description": "Recovered IOC.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "None",
+      "recommended_validation": "Corroborate telemetry.",
+      "risk_score": 60,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "N-1A9ODN6ZXK4LQ"
+      ]
+    },
+    {
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "login.passport.com",
+      "description": "Legitimate Microsoft traffic (System/Network Baseline).",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "None",
+      "recommended_validation": "Corroborate telemetry.",
+      "risk_score": 0,
+      "priority": "Low",
+      "review_status": "pending",
+      "iocs": []
+    },
+    {
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "mobile.msn.com",
+      "description": "Legitimate Microsoft traffic (System/Network Baseline).",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "None",
+      "recommended_validation": "Corroborate telemetry.",
+      "risk_score": 0,
+      "priority": "Low",
+      "review_status": "pending",
+      "iocs": []
+    },
+    {
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "cybercafe.undernet",
+      "description": "Recovered IOC.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "None",
+      "recommended_validation": "Corroborate telemetry.",
+      "risk_score": 50,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "cybercafe.undernet"
+      ]
+    },
+    {
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "iso-warez.efnet",
+      "description": "Recovered IOC.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "None",
+      "recommended_validation": "Corroborate telemetry.",
+      "risk_score": 50,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "iso-warez.efnet"
+      ]
+    },
+    {
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "thedarktower.afternet",
+      "description": "Recovered IOC.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "None",
+      "recommended_validation": "Corroborate telemetry.",
+      "risk_score": 50,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "thedarktower.afternet"
+      ]
+    },
+    {
+      "name": "Observed Email",
+      "type": "email_header",
+      "value": "whoknowsme@sbcglobal.net",
+      "description": "Secondary contact email address.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "None",
+      "recommended_validation": "Corroborate telemetry.",
+      "risk_score": 40,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "whoknowsme@sbcglobal.net"
+      ]
+    }
+  ]
+}

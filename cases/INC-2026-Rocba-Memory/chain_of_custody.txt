@@ -1,0 +1,5 @@
+Timestamp: Sun Jun 14 09:52:31 UTC 2026
+Source File: /mnt/hgfs/Vm shared folder/Rocba-Memory.zip
+Hash Algorithm: SHA256
+Acquisition Hash: 32cec94018051f6ce20ec75f1b7b53ad2f6eb5e8bbaec7b402e30409af552b09
+Hash Source: Independently calculated via native sha256sum

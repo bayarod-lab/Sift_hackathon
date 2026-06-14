@@ -1,6 +1,5 @@
-Timestamp: Sat Jun 13 06:01:18 UTC 2026
-Source File: /mnt/hgfs/Vm shared folder/rocba-cdrive.e01
+Timestamp: Sun Jun 14 12:37:32 UTC 2026
+Source File: /home/sansforensics/Desktop/rocba-cdrive.e01
 Hash Algorithm: SHA256
 Acquisition Hash: f2eb856d6fb48e3928e6b6d388b2f116a57b735137354a7eaddca951d81b5c67
 Hash Source: E01 embedded acquisition hash (not independently recalculated)
-Scenario File Integrated: Yes

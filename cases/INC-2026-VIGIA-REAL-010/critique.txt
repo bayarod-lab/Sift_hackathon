@@ -1,7 +1,30 @@
-Technical Audit Findings - INC-2026-VIGIA-REAL-010
+QA AUDIT REPORT: INC-2026-VIGIA-REAL-010
+Analyst: Senior Forensic Analyst
+Date: 2026-05-22
 
-1. Missing Actor/Intent Context: The triage ledger fails to capture the involvement of the criminal group 'KRYPTIX' and the specific negotiation dynamics (renegotiation attempt/price increase). This context is vital for establishing the intent and potential organized crime nexus, rather than just isolated industrial espionage.
+1. FACTUAL ACCURACY:
+   - Finding: The summary and artifact descriptions are generally accurate. However, the summary fails to identify the negotiation partner, "Mr. E. Yob," who is explicitly named in the facts.json file. This is a critical omission for attribution and case context.
 
-2. Missing Forensic Attribution: The ledger omits the device identification (Motorola Droid) found in the EXIF metadata. This is a critical forensic artifact for verifying the source of the exfiltrated files and establishing device attribution.
+2. RISK SCORE INTEGRITY:
+   - Finding: Satisfactory. Risk scores are appropriately set to High/High for confirmed malicious activity. No unjustified hedging detected.
 
-3. Victim Identification: The ledger focuses exclusively on the suspect (Norby) and fails to identify the victim (Yob Taog) whose device was compromised, which is a significant gap in the incident narrative.
+3. SEMANTIC BIAS CHECK:
+   - Finding: Satisfactory. No evidence of bias or downgrading of risk based on artifact naming.
+
+4. NULL HYPOTHESIS EVALUATION:
+   - Finding: Satisfactory. The null hypothesis is clearly stated and the refutation is robust, citing specific evidence (hardcoded malware references and unauthorized negotiation context).
+
+5. IOC COMPLETENESS:
+   - Finding: Satisfactory. The identified IOC (50.56.29.109) is correctly mapped in the ledger.
+
+6. MITRE ACCURACY & OS AWARENESS:
+   - Finding: Satisfactory. The TTPs (T1071, T1567, T1592) are correctly applied and appropriate for the context of mobile espionage.
+
+7. TIMELINE LOGIC:
+   - Finding: Satisfactory. The timeline sequence is logical and consistent with the provided artifacts.
+
+8. SUMMARY COMPLETENESS:
+   - Finding: Deficient. While the summary covers the exfiltration mechanism and outcome, it fails to name the negotiation partner ("Mr. E. Yob") identified in the facts.json. The summary must be updated to include this entity to provide a complete picture of the espionage network.
+
+RECOMMENDATION:
+Update the summary in the triage ledger to include the negotiation partner identified in the facts. No other changes required.

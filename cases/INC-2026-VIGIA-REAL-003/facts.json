@@ -1,0 +1,98 @@
+[
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Incident Type",
+    "artifact_value": "web_compromise_persistence",
+    "source_file": "cases/INC-2026-VIGIA-REAL-003/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": []
+  },
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Case Description",
+    "artifact_value": "The web server of a company running Windows Server 2008 Standard and XAMPP was compromised through SQL injection in DVWA. The attacker deployed PHP webshells, created user accounts, and configured RDP access from the internal subnet.",
+    "source_file": "cases/INC-2026-VIGIA-REAL-003/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "192.168.56.102",
+    "source_file": "cases/INC-2026-VIGIA-REAL-003/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "192.168.56.102"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "User Agent",
+    "artifact_value": "ies/sqli",
+    "source_file": "cases/INC-2026-VIGIA-REAL-003/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Presence of sqlmap User-Agent indicating automated SQL injection attack | IP 192.168.56.102 is typical of Kali Linux virtual machines in VirtualBox",
+    "source_file": "cases/INC-2026-VIGIA-REAL-003/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "192.168.56.0",
+    "source_file": "cases/INC-2026-VIGIA-REAL-003/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "192.168.56.0"
+    ]
+  },
+  {
+    "artifact_type": "bash_history",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Simultaneous creation of two unauthorized user accounts (user1 and hacker) | Firewall modification to allow RDP from attacker's specific subnet",
+    "source_file": "cases/INC-2026-VIGIA-REAL-003/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "tmpukudk.php",
+    "source_file": "cases/INC-2026-VIGIA-REAL-003/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": [
+      "tmpukudk.php"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "tmpbiwuc.php",
+    "source_file": "cases/INC-2026-VIGIA-REAL-003/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": [
+      "tmpbiwuc.php"
+    ]
+  },
+  {
+    "artifact_type": "process_list",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "httpd.exe processes contain system command strings in memory | Temporary PHP files with random names indicate dropped webshells",
+    "source_file": "cases/INC-2026-VIGIA-REAL-003/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "file_metadata",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Two new users with consecutive SIDs created at the same timestamp | Presence of C99 shell in webshells.zip archive",
+    "source_file": "cases/INC-2026-VIGIA-REAL-003/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  }
+]

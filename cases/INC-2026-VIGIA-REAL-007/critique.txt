@@ -1,0 +1,29 @@
+FORENSIC AUDIT REPORT: INC-2026-VIGIA-REAL-007
+AUDITOR: Senior Forensic Analyst
+DATE: 2026-05-22
+
+1. FACTUAL ACCURACY:
+   - Artifact descriptions are consistent with facts.json. No mischaracterizations found.
+
+2. RISK SCORE INTEGRITY:
+   - FAILED: The External IP (140.247.62.34) is marked as Medium risk (60). This is the primary infrastructure used for the attack and should be classified as High risk.
+   - FAILED: The MAC Address (00:17:f2:e2:c0:ce) is marked as Medium risk (50). This is a unique hardware identifier for the attacker's device and is a high-value forensic artifact for attribution. It should be classified as High risk.
+
+3. SEMANTIC BIAS CHECK:
+   - No evidence of semantic bias detected.
+
+4. NULL HYPOTHESIS EVALUATION:
+   - The null hypothesis is clearly stated and the refutation is logically supported by the consistent use of the Gmail account jcoach@gmail.com.
+
+5. IOC COMPLETENESS:
+   - IOC arrays in triage_ledger.json are complete and cross-reference correctly with facts.json.
+
+6. MITRE ACCURACY & OS AWARENESS:
+   - FAILED: T1585.001 (Establish Accounts: Social Media Accounts) is incorrectly applied to the event of connecting to a WiFi router. This TTP is for account creation/acquisition, not network access.
+   - FAILED: T1566.001 (Spearphishing Attachment) is applied to the harassment emails. The facts do not indicate an attachment was used; T1566.002 (Spearphishing Link) or a general T1566 mapping would be more appropriate if the email contained a link.
+
+7. TIMELINE LOGIC:
+   - Timeline sequencing is logical and supported by the available artifacts.
+
+8. SUMMARY COMPLETENESS:
+   - The summary is comprehensive, explicitly naming the actor, the mechanism, and the outcome.

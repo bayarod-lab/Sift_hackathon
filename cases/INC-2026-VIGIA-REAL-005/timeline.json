@@ -1,0 +1,23 @@
+[
+  {
+    "sequence": 1,
+    "event_description": "Subject established a hidden storage volume named R2D2 using BitLocker to conceal sensitive data staging areas.",
+    "artifacts_involved": ["BitLocker Volume R2D2", "Forensic Anomaly"],
+    "mitre_ttp": "T1560.001",
+    "confidence": "Medium"
+  },
+  {
+    "sequence": 2,
+    "event_description": "Subject created an AES-encrypted README file in the Documents directory to obfuscate communication or instructions.",
+    "artifacts_involved": ["AES Encrypted README", "Forensic Anomaly"],
+    "mitre_ttp": "T1070.004",
+    "confidence": "High"
+  },
+  {
+    "sequence": 3,
+    "event_description": "Subject generated and stored GPG-encrypted keys in the Downloads folder to facilitate secure, asymmetric communication.",
+    "artifacts_involved": ["GPG Encrypted Keys", "Forensic Anomaly"],
+    "mitre_ttp": "T1560.001",
+    "confidence": "High"
+  }
+]

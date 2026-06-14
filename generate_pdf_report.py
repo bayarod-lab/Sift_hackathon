@@ -8,6 +8,7 @@ Accepts a JSON file as an argument to dynamically build reports for any case.
 import sys
 import json
 import re
+import html
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -75,7 +76,6 @@ body {
     color: #93c5fd;
     margin-bottom: 0.5cm;
 }
-
 .report-type {
     font-size: 10pt;
     font-weight: 400;
@@ -240,7 +240,7 @@ h2 .section-num {
 .cov-yes { background: #dcfce7; color: #166534; border-color: #86efac; }
 .cov-no { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
 
-/* ── Tables ── */
+/* ── Meta Table (System Scope Only) ── */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -257,10 +257,7 @@ thead th {
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
-/* CRITICAL FIX: Forces rows to stay bound to a single page context */
-tbody tr { 
-    page-break-inside: avoid !important; 
-}
+tbody tr { page-break-inside: avoid !important; }
 tbody tr:nth-child(even) { background: #f8fafc; }
 tbody tr:nth-child(odd)  { background: #ffffff; }
 tbody td {
@@ -281,21 +278,69 @@ code {
     word-break: break-all;
 }
 
-.badge { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 7.5pt; font-weight: 600; text-transform: uppercase; }
-.badge-high { background: #fee2e2; color: #991b1b; }
-.badge-medium { background: #ffedd5; color: #9a3412; }
-.badge-low { background: #f1f5f9; color: #475569; }
-.badge-info { background: #e0f2fe; color: #075985; }
-
-.risk-badge { display: inline-block; margin-bottom: 4px; padding: 2px 6px; border-radius: 3px; font-size: 7.5pt; font-weight: bold; }
+.risk-badge { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 7.5pt; font-weight: bold; }
 .risk-high { background: #fef2f2; color: #b91c1c; border: 1px solid #f87171; }
 .risk-medium { background: #fffbeb; color: #b45309; border: 1px solid #fbbf24; }
 .risk-low { background: #f8fafc; color: #334155; border: 1px solid #cbd5e1; }
 
-.pri-badge { display: block; width: fit-content; padding: 2px 6px; border-radius: 3px; font-size: 7.5pt; font-weight: bold; text-transform: uppercase; }
+.pri-badge { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 7.5pt; font-weight: bold; text-transform: uppercase; }
 .pri-high { background: #dc2626; color: white; }
 .pri-medium { background: #f59e0b; color: white; }
 .pri-low { background: #64748b; color: white; }
+
+/* ── Artifact Cards (Replaces Table) ── */
+.artifact-card {
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+    margin-bottom: 0.5cm;
+    padding: 0.4cm;
+    border-radius: 6px;
+    page-break-inside: avoid;
+}
+.artifact-header {
+    font-size: 10pt;
+    font-weight: 700;
+    border-bottom: 2px solid #cbd5e1;
+    padding-bottom: 0.15cm;
+    margin-bottom: 0.2cm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.artifact-body {
+    font-size: 9pt;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.artifact-detail {
+    margin-bottom: 0.15cm;
+}
+.artifact-detail-label {
+    font-weight: 600;
+    color: #475569;
+}
+.badges-container {
+    margin-top: 0.2cm;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.conf-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 7.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: #e2e8f0;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+}
+.conf-badge.high { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+.conf-badge.medium { background: #ffedd5; color: #9a3412; border-color: #fdba74; }
+.conf-badge.low { background: #f1f5f9; color: #475569; border-color: #cbd5e1; }
+.conf-badge.none { background: #f3f4f6; color: #9ca3af; border-color: #e5e7eb; }
 
 /* ── Metric cards ── */
 .metric-row { display: flex; gap: 0.3cm; margin: 0.3cm 0; }
@@ -324,12 +369,12 @@ code {
 """
 
 def build_html(data: dict) -> str:
-    case_id    = data.get("case_id", "UNKNOWN-CASE")
-    client     = data.get("client", "Automated Triage Pipeline")
-    prepared   = data.get("prepared_by", "Autonomous DFIR Agent")
-    date_str   = data.get("date", datetime.now().strftime("%Y-%m-%d"))
-    title      = data.get("title", "Dynamic Triage Assessment")
-    subtitle   = data.get("subtitle", "Autonomous Forensic Report")
+    case_id    = html.escape(data.get("case_id", "UNKNOWN-CASE"))
+    client     = html.escape(data.get("client", "Automated Triage Pipeline"))
+    prepared   = html.escape(data.get("prepared_by", "Autonomous DFIR Agent"))
+    date_str   = html.escape(data.get("date", datetime.now().strftime("%Y-%m-%d")))
+    title      = html.escape(data.get("title", "Dynamic Triage Assessment"))
+    subtitle   = html.escape(data.get("subtitle", "Autonomous Forensic Report"))
     body_html  = data.get("body_html", "")
 
     return f"""<!DOCTYPE html>
@@ -390,131 +435,174 @@ def build_html(data: dict) -> str:
 </html>"""
 
 def extract_coverage(summary_text: str) -> tuple:
-    """Parses the 'Coverage: Filesystem=YES...' string out of the summary."""
+    """Parses the 'Coverage: Filesystem: YES...' string out of the summary."""
     coverage_html = ""
-    match = re.search(r'(Coverage:\s*.*?)(?:$|\n)', summary_text)
+    # Search for both old (=) and new (:) schema formats to be safe
+    match = re.search(r'(EVIDENCE COVERAGE MATRIX:.*)(?:$|\n)', summary_text)
     if match:
         cov_str = match.group(1)
-        # Remove from main summary
         summary_text = summary_text.replace(cov_str, '').strip()
         
-        # Parse items
-        items = cov_str.replace("Coverage:", "").split(";")
+        # Clean up the string to extract items
+        clean_str = cov_str.replace("EVIDENCE COVERAGE MATRIX:", "").strip()
+        
+        # Support both [Filesystem: YES] and Filesystem=YES formats
+        items = re.findall(r'\[?(Filesystem|Registry|EventLogs|NetworkLogs)[\:\=]\s*(YES|NO)\]?', clean_str)
+        
         badges = ""
-        for item in items:
-            if "=" in item:
-                k, v = item.split("=", 1)
-                k = k.strip()
-                v = v.strip().upper()
-                css_cls = "cov-yes" if "YES" in v else "cov-no"
-                badges += f'<span class="cov-badge {css_cls}"><b>{k}</b>: {v}</span>'
+        for k, v in items:
+            css_cls = "cov-yes" if v.upper() == "YES" else "cov-no"
+            badges += f'<span class="cov-badge {css_cls}"><b>{html.escape(k)}</b>: {html.escape(v.upper())}</span>'
         
         if badges:
             coverage_html = f'<div class="coverage-box"><span class="cov-title">Evidence Coverage Matrix</span>{badges}</div>'
             
-    return summary_text, coverage_html
+    return html.escape(summary_text), coverage_html
 
-def build_dynamic_body(json_data: dict, real_target_path: str) -> str:
-    verdict = json_data.get("intent_verdict", "UNKNOWN").upper()
-    summary = json_data.get("summary", "No summary provided by the agent.")
+def build_dynamic_body(json_data: dict, real_target_path: str, case_dir: Path) -> str:
+    verdict = html.escape(json_data.get("intent_verdict", "UNKNOWN").upper())
+    raw_summary = json_data.get("summary", "No summary provided by the agent.")
     artifacts = json_data.get("artifacts", [])
+
+    # Extract coverage matrix visually and escape the rest of the summary
+    summary_safe, coverage_html = extract_coverage(raw_summary)
 
     # --- Extract MITRE TTPs ---
     mitre_ttps = json_data.get("mitre_ttps", [])
     mitre_html = ""
     if mitre_ttps:
-        mitre_html = f'<div style="margin-bottom: 15px; font-size: 8.5pt; color: #334155;"><b>Identified MITRE ATT&CK Techniques:</b> <code>{", ".join(mitre_ttps)}</code></div>'
+        safe_ttps = [html.escape(ttp) for ttp in mitre_ttps]
+        mitre_html = f'<div style="margin-top: 10px; margin-bottom: 15px; font-size: 8.5pt; color: #334155;"><b>Candidate MITRE ATT&CK Techniques:</b> <code>{", ".join(safe_ttps)}</code></div>'
 
-    # Extract coverage matrix visually
-    summary, coverage_html = extract_coverage(summary)
+    # --- Extract Null Hypothesis ---
+    null_hypo = json_data.get("null_hypothesis", "")
+    null_html = ""
+    if null_hypo:
+        null_html = f'<div style="background: #f1f5f9; border-left: 4px solid #64748b; padding: 10px; margin-top: 10px; margin-bottom: 15px; font-size: 8.5pt; border-radius: 0 4px 4px 0;"><b>Null Hypothesis Evaluation:</b> {html.escape(null_hypo)}</div>'
+
+    # --- Extract Timeline ---
+    timeline_html = ""
+    timeline_path = case_dir / "timeline.json"
+    if timeline_path.exists():
+        try:
+            with open(timeline_path, 'r', encoding='utf-8') as f:
+                timeline_data = json.load(f)
+            
+            if timeline_data and isinstance(timeline_data, list):
+                # Check if it's our zero-evidence fallback
+                if len(timeline_data) == 1 and "failed" in timeline_data[0].get("event_description", "").lower():
+                    pass # Skip rendering the timeline section if it's empty/failed
+                else:
+                    events = ""
+                    for event in timeline_data:
+                        seq = html.escape(str(event.get('sequence', '')))
+                        desc = html.escape(str(event.get('event_description', '')))
+                        ttp = html.escape(str(event.get('mitre_ttp', '')))
+                        conf = html.escape(str(event.get('confidence', '')))
+                        
+                        ttp_badge = f'<span class="badge badge-high" style="margin-left: 8px;">{ttp}</span>' if ttp else ''
+                        conf_tag = f'<span style="color:#9ca3af; font-size: 7.5pt; margin-left: 8px;">(Conf: {conf})</span>' if conf else ''
+                        
+                        events += f'<div style="margin-bottom: 10px; padding-left: 12px; border-left: 2px solid #cbd5e1; padding-bottom: 2px;"><b>Step {seq}:</b> {desc}{ttp_badge}{conf_tag}</div>'
+                    
+                    timeline_html = f'<h2><span class="section-num">02</span> Attack Sequence & Timeline</h2><div style="background: #f8fafc; padding: 15px; border-radius: 4px; font-size: 9pt; border: 1px solid #e2e8f0; margin-bottom: 15px;">{events}</div>'
+        except Exception as e:
+            print(f"[-] Warning: Failed to parse timeline.json for PDF rendering: {e}")
 
     # Set styles based on AI verdict
     verdict_color_class = "green-top"
-    if verdict == "MALICIOUS" or verdict == "CONFIRMED MALICIOUS":
+    if verdict in ["MALICIOUS", "CONFIRMED MALICIOUS"]:
         verdict_color_class = "red-top"
     elif verdict == "SUSPICIOUS":
         verdict_color_class = "orange-top"
 
-    # Build the Artifacts Table dynamically with strict column matching (5 columns total)
+    # --- Build the Artifacts Cards dynamically ---
+    artifacts_html = ""
     if len(artifacts) > 0:
-        artifacts_rows = ""
         for art in artifacts:
-            # Strip hidden newlines to prevent PDF table wrapping errors
-            name = str(art.get("name", "Unknown Artifact")).replace("\n", " ").replace("\r", " ").strip()
-            desc = str(art.get("description", "No description provided.")).replace("\n", " ").replace("\r", " ").strip()
-            
+            safe_name = html.escape(str(art.get("name", "Unknown Artifact")).strip())
+            safe_val  = html.escape(str(art.get("value", "N/A")).strip())
+            safe_desc = html.escape(str(art.get("description", "No description provided.")).strip())
+            safe_rec  = html.escape(str(art.get("recommended_validation", "Manual review required.")).strip())
+
             # --- RENDER EXPLICIT IOC BLOCK ---
             iocs = art.get("iocs", [])
             if iocs and isinstance(iocs, list):
-                # Clean out any empty strings
-                valid_iocs = [i.strip() for i in iocs if i.strip()]
+                valid_iocs = [html.escape(i.strip()) for i in iocs if i.strip()]
                 if valid_iocs:
                     ioc_str = "<br>".join(valid_iocs)
-                    # Append a red, monospaced alert box directly into the description column
-                    desc += f'<div style="margin-top: 8px; padding: 6px; background: #fee2e2; border-left: 3px solid #ef4444; border-radius: 3px; font-family: monospace; font-size: 7.5pt; word-wrap: break-word; color: #7f1d1d;"><b>INDICATORS OF COMPROMISE:</b><br>{ioc_str}</div>'
-            rec_val = str(art.get("recommended_validation", "Manual review required.")).replace("\n", " ").replace("\r", " ").strip()
-            
-            # DEFENSIVE PROGRAMMING FALLBACK: Support both 'confidence' and 'confidence_level'
-            conf = str(art.get("confidence", art.get("confidence_level", "Low"))).strip().title()
-            
+                    safe_desc += f'<div style="margin-top: 8px; padding: 6px; background: #fee2e2; border-left: 3px solid #ef4444; border-radius: 3px; font-family: monospace; font-size: 7.5pt; word-wrap: break-word; color: #7f1d1d;"><b>INDICATORS OF COMPROMISE:</b><br>{ioc_str}</div>'
+
             # --- Extract Risk Score safely ---
-            risk_val = art.get("risk_score", 0)
-            try: 
-                risk_val = int(risk_val)
-            except (ValueError, TypeError): 
-                risk_val = 0
+            risk_raw = str(art.get("risk_score", "0")).replace("$", "").split("/")[0]
+            risk_clean = re.sub(r'[^0-9]', '', risk_raw)
+            risk_val = int(risk_clean) if risk_clean else 0
+            safe_risk = html.escape(str(risk_val))
             
-            risk_html = str(risk_val) + "/100"
-            # SANITY SCRUBBER: Strip out any accidental LaTeX math markers ($) injected by the model
-            risk_html = risk_html.replace("$", "")
-            
-            pri_val = art.get("priority", "Low").title()
-            
-            # Render Risk Badge
+            raw_pri = str(art.get("priority", "Low")).strip().title()
+            safe_pri = html.escape(raw_pri)
+
             risk_cls = "risk-low"
             if risk_val >= 75: risk_cls = "risk-high"
             elif risk_val >= 40: risk_cls = "risk-medium"
             
-            # Render Priority Badge
             pri_cls = "pri-low"
-            if pri_val == "High": pri_cls = "pri-high"
-            elif pri_val == "Medium": pri_cls = "pri-medium"
-            
-            risk_html = f'<div class="risk-badge {risk_cls}">Risk: {risk_val}/100</div><div class="pri-badge {pri_cls}">{pri_val} Priority</div>'
+            if safe_pri == "High": pri_cls = "pri-high"
+            elif safe_pri == "Medium": pri_cls = "pri-medium"
 
-            # Render Confidence Badge
-            conf_badge = f'<span class="badge badge-info">{conf}</span>'
-            if conf.upper() == "HIGH":
-                conf_badge = f'<span class="badge badge-high">{conf}</span>'
-            elif conf.upper() == "MEDIUM":
-                conf_badge = f'<span class="badge badge-medium">{conf}</span>'
-            elif conf.upper() == "LOW":
-                conf_badge = f'<span class="badge badge-low">{conf}</span>'
+            header_right = f'<div style="display:flex; gap:5px;"><span class="risk-badge {risk_cls}">Risk: {safe_risk}/100</span><span class="pri-badge {pri_cls}">{safe_pri} Priority</span></div>'
 
-            artifacts_rows += f"<tr><td><code>{name}</code></td><td>{desc}</td><td>{risk_html}</td><td>{conf_badge}</td><td>{rec_val}</td></tr>"
-        
-        artifacts_table = f"""
-        <table>
-          <thead><tr>
-            <th style="width: 20%;">Artifact / Finding</th>
-            <th style="width: 35%;">Forensic Observation</th>
-            <th style="width: 15%;">Risk &amp; Priority</th>
-            <th style="width: 12%;">Confidence</th>
-            <th style="width: 18%;">Recommended Validation</th>
-          </tr></thead>
-          <tbody>
-            {artifacts_rows}
-          </tbody>
-        </table>
-        """
+            # --- Map the Three-Tier Confidence Values ---
+            def get_conf_cls(val):
+                v = val.upper()
+                if "HIGH" in v: return "high"
+                if "MEDIUM" in v: return "medium"
+                if "LOW" in v: return "low"
+                return "none"
+
+            raw_pres = str(art.get("presence_confidence", "None")).strip()
+            raw_exec = str(art.get("execution_confidence", "None")).strip()
+            raw_int  = str(art.get("intent_confidence", "None")).strip()
+
+            safe_pres = html.escape(raw_pres)
+            safe_exec = html.escape(raw_exec)
+            safe_int  = html.escape(raw_int)
+
+            cls_pres = get_conf_cls(raw_pres)
+            cls_exec = get_conf_cls(raw_exec)
+            cls_int  = get_conf_cls(raw_int)
+
+            artifacts_html += f"""
+            <div class="artifact-card">
+                <div class="artifact-header">
+                    <span>{safe_name}</span>
+                    {header_right}
+                </div>
+                <div class="artifact-body">
+                    <div class="artifact-detail"><span class="artifact-detail-label">Value/Path:</span> <code>{safe_val}</code></div>
+                    <div class="artifact-detail"><span class="artifact-detail-label">Observation:</span> {safe_desc}</div>
+                    <div class="artifact-detail"><span class="artifact-detail-label">Validation:</span> {safe_rec}</div>
+                    <div class="badges-container">
+                        <span class="conf-badge {cls_pres}">Presence: {safe_pres}</span>
+                        <span class="conf-badge {cls_exec}">Execution: {safe_exec}</span>
+                        <span class="conf-badge {cls_int}">Intent: {safe_int}</span>
+                    </div>
+                </div>
+            </div>
+            """
     else:
-        artifacts_table = "<p><em>No specific malicious or suspicious artifacts were extracted by the agent during this scan.</em></p>"
+        artifacts_html = "<p><em>No specific malicious or suspicious artifacts were extracted by the agent during this scan.</em></p>"
 
-    html = f"""
+    # Dynamic Section Numbering based on Timeline Presence
+    sys_sec = "03" if timeline_html else "02"
+    matrix_sec = "04" if timeline_html else "03"
+
+    html_content = f"""
     <h2><span class="section-num">01</span> Executive Summary</h2>
     <div class="exec-summary">
-      <p>{summary}</p>
+      <p>{summary_safe}</p>
     </div>
+    {null_html}
     {coverage_html}
     {mitre_html}
 
@@ -528,27 +616,29 @@ def build_dynamic_body(json_data: dict, real_target_path: str) -> str:
         <div class="metric-label">Extracted Findings</div>
       </div>
     </div>
+    
+    {timeline_html}
 
-    <h2><span class="section-num">02</span> System Profile &amp; Evidence Scope</h2>
+    <h2><span class="section-num">{sys_sec}</span> System Profile &amp; Evidence Scope</h2>
     <table>
       <thead><tr><th style="width: 25%;">Property</th><th>Value</th></tr></thead>
       <tbody>
-        <tr><td>Target Evidence Path</td><td><code>{real_target_path}</code></td></tr>
-        <tr><td>Analysis Timestamp</td><td>{datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}</td></tr>
+        <tr><td>Target Evidence Path</td><td><code>{html.escape(real_target_path)}</code></td></tr>
+        <tr><td>Analysis Timestamp</td><td>{html.escape(datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"))}</td></tr>
         <tr><td>Analysis Tooling</td><td>Autonomous MCP Framework</td></tr>
       </tbody>
     </table>
 
-    <h2><span class="section-num">03</span> Extracted Findings Matrix</h2>
-    {artifacts_table}
+    <h2><span class="section-num">{matrix_sec}</span> Extracted Findings Matrix</h2>
+    {artifacts_html}
     """
     
-    return html
+    return html_content
 
 
 def generate_report(data: dict, output_path: str, real_target_path: str) -> str:
-    html = build_html(data)
-    HTML(string=html).write_pdf(
+    html_str = build_html(data)
+    HTML(string=html_str).write_pdf(
         output_path,
         stylesheets=[CSS(string="")],
         presentational_hints=True,
@@ -593,7 +683,8 @@ if __name__ == "__main__":
         "date": current_date,
         "title": "Dynamic Triage Assessment",
         "subtitle": "Autonomous Forensic Report",
-        "body_html": build_dynamic_body(triage_data, real_target),
+        # FIX: Added the case_dir parameter here
+        "body_html": build_dynamic_body(triage_data, real_target, case_dir),
     }
 
     exports_dir = Path("./exports/")

@@ -1,0 +1,60 @@
+[
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Incident Type",
+    "artifact_value": "mobile_espionage_industrial",
+    "source_file": "cases/INC-2026-VIGIA-REAL-010/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": []
+  },
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Case Description",
+    "artifact_value": "Dual case: Donald Norby stole confidential documents from SwiftLogic Inc. and was found dead. He was negotiating the sale of Palomino product documents with Mr. E. Yob Taog's phone was compromised with malware that exfiltrated PDFs.",
+    "source_file": "cases/INC-2026-VIGIA-REAL-010/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "SMS from malware confirming periodic exfiltration of PDFs | Negotiation of intellectual property sale via SMS/email",
+    "source_file": "cases/INC-2026-VIGIA-REAL-010/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "External IP",
+    "artifact_value": "50.56.29.109",
+    "source_file": "cases/INC-2026-VIGIA-REAL-010/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "50.56.29.109"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Hardcoded reference to external server 50.56.29.109 in malware code | Systematic downloads of confidential PDFs at regular intervals",
+    "source_file": "cases/INC-2026-VIGIA-REAL-010/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "file_metadata",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Confidential competitor documents on phone SD card | Search history on target company employees indicates prior reconnaissance",
+    "source_file": "cases/INC-2026-VIGIA-REAL-010/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Industrial espionage negotiation pattern with renegotiation attempt | Suspect's death under violent circumstances after attempting to raise the price",
+    "source_file": "cases/INC-2026-VIGIA-REAL-010/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  }
+]

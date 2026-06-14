@@ -1,0 +1,49 @@
+[
+  {
+    "sequence": 1,
+    "event_description": "Attacker at 192.168.56.102 utilized sqlmap to perform SQL injection against the web server.",
+    "artifacts_involved": [
+      "Attacker IP",
+      "SQL Injection Tooling",
+      "User-Agent Indicator"
+    ],
+    "mitre_ttp": "T1190",
+    "confidence": "High"
+  },
+  {
+    "sequence": 2,
+    "event_description": "Attacker deployed PHP webshells (tmpukudk.php, tmpbiwuc.php) to the web directory.",
+    "artifacts_involved": [
+      "Webshells"
+    ],
+    "mitre_ttp": "T1505.003",
+    "confidence": "High"
+  },
+  {
+    "sequence": 3,
+    "event_description": "Attacker created unauthorized local user accounts 'user1' and 'hacker' to establish persistence.",
+    "artifacts_involved": [
+      "Unauthorized User Accounts"
+    ],
+    "mitre_ttp": "T1136.001",
+    "confidence": "High"
+  },
+  {
+    "sequence": 4,
+    "event_description": "Attacker modified firewall rules to permit RDP access from the internal subnet.",
+    "artifacts_involved": [
+      "Unauthorized User Accounts"
+    ],
+    "mitre_ttp": "T1562.004",
+    "confidence": "High"
+  },
+  {
+    "sequence": 5,
+    "event_description": "Presence of network segment 192.168.56.0 associated with the attacker's infrastructure.",
+    "artifacts_involved": [
+      "IP Address"
+    ],
+    "mitre_ttp": "",
+    "confidence": "High"
+  }
+]

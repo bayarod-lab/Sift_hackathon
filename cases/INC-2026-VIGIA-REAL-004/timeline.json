@@ -1,39 +1,30 @@
 [
   {
     "sequence": 1,
-    "event_description": "Initial access via malicious download of executable disguised as legitimate software.",
-    "artifacts_involved": [
-      "http://www.malware430.com/html/VMwareUpdate.exe",
-      "www.malware430.com"
-    ],
-    "mitre_ttp": "T1189 - Drive-by Compromise"
+    "event_description": "User executes malicious file masquerading as SysInternals Suite, initiating the infection chain.",
+    "artifacts_involved": ["SHA256 Hash", "Case Description"],
+    "mitre_ttp": "T1036.005",
+    "confidence": "High"
   },
   {
     "sequence": 2,
-    "event_description": "Execution of malicious payload on the host system.",
-    "artifacts_involved": [
-      "C:\\Users\\Public\\Downloads\\SysInternals.exe",
-      "72e6d1728a546c2f3ee32c063ed09fa6ba8c46ac33b0dd2e354087c1ad26ef48"
-    ],
-    "mitre_ttp": "T1204.002 - User Execution: Malicious File"
+    "event_description": "Malware initiates network connection to malware430.com 17 seconds post-execution to download secondary payload.",
+    "artifacts_involved": ["Domain", "IP Address"],
+    "mitre_ttp": "T1071.001",
+    "confidence": "High"
   },
   {
     "sequence": 3,
-    "event_description": "Persistence established via installation of a malicious service.",
-    "artifacts_involved": [
-      "c:\\Windows\\vmtoolsIO.exe",
-      "VMwareIOHelperService"
-    ],
-    "mitre_ttp": "T1543.003 - Create or Modify System Process: Windows Service"
+    "event_description": "Malware modifies hosts file and installs a fake Windows service mimicking VMware for persistence.",
+    "artifacts_involved": ["Forensic Anomaly"],
+    "mitre_ttp": "T1543.003",
+    "confidence": "High"
   },
   {
     "sequence": 4,
-    "event_description": "System configuration modification to redirect network traffic for command and control or data exfiltration.",
-    "artifacts_involved": [
-      "sysinternals.com",
-      "malware430.com",
-      "192.168.x.x"
-    ],
-    "mitre_ttp": "T1498.001 - Network Denial of Service: Direct Network Flood"
+    "event_description": "Malware deletes prefetch files as an anti-forensic measure to hinder investigation.",
+    "artifacts_involved": ["Forensic Anomaly"],
+    "mitre_ttp": "T1070.004",
+    "confidence": "Medium"
   }
 ]

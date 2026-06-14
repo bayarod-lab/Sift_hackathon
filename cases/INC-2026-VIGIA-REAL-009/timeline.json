@@ -1,0 +1,44 @@
+[
+  {
+    "sequence": 1,
+    "event_description": "Subject downloaded privilege escalation exploit from metasploit.com to gain unauthorized access.",
+    "artifacts_involved": ["metasploit.com", "root.sh"],
+    "mitre_ttp": "T1068",
+    "confidence": "High"
+  },
+  {
+    "sequence": 2,
+    "event_description": "Subject performed mass copy of files from administrative share to local directory.",
+    "artifacts_involved": ["domain.xls", "ftp.pcap"],
+    "mitre_ttp": "T1005",
+    "confidence": "High"
+  },
+  {
+    "sequence": 3,
+    "event_description": "Subject compressed staged files into archive.zip for exfiltration.",
+    "artifacts_involved": ["archive.zip"],
+    "mitre_ttp": "T1560.001",
+    "confidence": "High"
+  },
+  {
+    "sequence": 4,
+    "event_description": "Subject configured external HTTP proxy and prepared Perl script for data transfer.",
+    "artifacts_involved": ["219.93.175.67", "xfer.pl"],
+    "mitre_ttp": "T1071.001",
+    "confidence": "High"
+  },
+  {
+    "sequence": 5,
+    "event_description": "Subject exfiltrated compressed data via HTTP proxy.",
+    "artifacts_involved": ["219.93.175.67", "archive.zip"],
+    "mitre_ttp": "T1071.001",
+    "confidence": "High"
+  },
+  {
+    "sequence": 6,
+    "event_description": "Subject deleted xfer.pl script to cover tracks.",
+    "artifacts_involved": ["xfer.pl"],
+    "mitre_ttp": "T1070.004",
+    "confidence": "High"
+  }
+]

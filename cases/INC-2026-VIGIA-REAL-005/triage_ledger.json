@@ -1,29 +1,53 @@
 {
   "case_id": "VIGIA-REAL-005",
-  "target": "Jane",
-  "intent_verdict": "Assessed Intent: Data Concealment / Anti-Forensics",
-  "summary": "The subject is utilizing multi-layered encryption techniques including AES, BitLocker, and GPG/PGP to obscure sensitive data. This behavior is consistent with deliberate anti-forensic measures. The investigation must move beyond static analysis to include: 1) Recovery of unencrypted artifacts from system caches (specifically for the README file); 2) Execution correlation via Prefetch, Shimcache, and Amcache to identify the binary responsible for encryption; 3) Registry analysis (e.g., MountPoints2) to link the BitLocker volume to user activity; and 4) Systematic recovery attempts for the BitLocker volume 'R2D2' via AD, USB, or backup key locations.",
+  "target": "Unknown Endpoint",
+  "intent_verdict": "Suspicious",
+  "summary": "The subject is employing multiple, layered encryption methods, including AES-encrypted files, a BitLocker-encrypted volume, and GPG-encrypted keys. While this behavior is consistent with privacy-conscious activity, the combination of these disparate methods warrants further investigation to determine if this is legitimate personal data protection or unauthorized concealment.",
+  "null_hypothesis": "The subject is a security-conscious user employing standard privacy tools for personal data protection. This remains a viable explanation, as the observed encryption methods are standard tools and do not inherently indicate malicious activity without further evidence of unauthorized access or data movement.",
+  "case_confidence": 50,
+  "mitre_ttps": [],
   "artifacts": [
     {
-      "name": "README file",
-      "type": "file",
-      "value": "Documents/README",
-      "description": "AES-encrypted file. Forensic priority: Search unallocated space and system caches for unencrypted versions.",
-      "review_status": "investigation_required"
+      "name": "AES Encrypted README",
+      "type": "file_metadata",
+      "value": "AES-encrypted README file in Documents",
+      "description": "Use of AES encryption to conceal a communication file.",
+      "confidence": "high",
+      "recommended_validation": "Attempt to identify encryption headers or entropy analysis.",
+      "risk_score": 40,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "README (AES encrypted)"
+      ]
     },
     {
-      "name": "GPG/PGP keys",
-      "type": "file",
-      "value": "Downloads/keys",
-      "description": "Asymmetric encrypted communication keys. Forensic priority: Correlate creation with execution artifacts (Prefetch/Shimcache/Amcache) to identify the responsible process.",
-      "review_status": "investigation_required"
+      "name": "BitLocker Volume R2D2",
+      "type": "file_metadata",
+      "value": "BitLocker volume named R2D2",
+      "description": "Volume with non-standard name suggests intent to conceal content.",
+      "confidence": "medium",
+      "recommended_validation": "Check volume creation logs and associated user permissions.",
+      "risk_score": 40,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "R2D2"
+      ]
     },
     {
-      "name": "BitLocker volume",
-      "type": "volume",
-      "value": "R2D2",
-      "description": "Full disk encryption. Forensic priority: Locate recovery keys (AD, USB, or backup files) and analyze Registry (MountPoints2) to link volume to user activity.",
-      "review_status": "investigation_required"
+      "name": "GPG Encrypted Keys",
+      "type": "file_metadata",
+      "value": "Keys file in Downloads encrypted with GPG/PGP",
+      "description": "Use of asymmetric encryption for secret communication indicates prior coordination.",
+      "confidence": "medium",
+      "recommended_validation": "Analyze GPG key metadata and associated communication logs.",
+      "risk_score": 40,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "GPG/PGP keys in Downloads"
+      ]
     }
   ]
 }

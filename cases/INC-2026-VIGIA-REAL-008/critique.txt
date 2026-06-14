@@ -1,0 +1,36 @@
+QA AUDIT REPORT: INC-2026-VIGIA-REAL-008
+AUDITOR: Senior Forensic Analyst
+DATE: 2024-05-22
+
+1. FACTUAL ACCURACY:
+   - The ledger accurately reflects the core findings from facts.json. No significant mischaracterizations found.
+
+2. RISK SCORE INTEGRITY:
+   - The risk scores are generally appropriate. The "Domain" artifact (wuauclt.exe) is assigned a risk score of 60, which is appropriate given it is a dual-use binary (LOLBin) that requires context. The masquerading process (reader_sl.exe) is correctly prioritized as High (95).
+
+3. SEMANTIC BIAS CHECK:
+   - No evidence of semantic bias. The analyst correctly identified that 'reader_sl.exe' is a masquerading process despite the name mimicking Adobe software.
+
+4. NULL HYPOTHESIS EVALUATION:
+   - The null hypothesis is well-structured. It acknowledges the potential for legitimate software updates (wuauclt.exe) but explicitly refutes it by citing specific forensic artifacts (process hollowing, mutex creation, web injection). This is a strong, defensible refutation.
+
+5. IOC COMPLETENESS:
+   - CRITICAL FINDING: The 'C2 IP Addresses' artifact in the triage_ledger.json is missing several IOCs present in facts.json.
+   - Facts.json lists 7 IP addresses: 41.168.5.140, 125.19.103.198, 188.40.0.138, 190.81.107.70, 85.214.204.32, 210.56.23.100, 211.44.250.173.
+   - The triage_ledger.json 'C2 IP Addresses' artifact iocs array only contains these same 7 IPs, but the artifact value string is cluttered. The ledger is technically complete regarding the list, but the formatting is inconsistent with the other structured IOC entries.
+
+6. MITRE ACCURACY & OS AWARENESS:
+   - The TTP mappings (T1071, T1071.001) are appropriate for C2 communication.
+   - The target OS is Windows XP SP2. The TTPs applied are valid for this legacy OS.
+
+7. TIMELINE LOGIC:
+   - The timeline.json sequence is logical. It correctly follows the progression from initial execution -> process hollowing -> persistence/management -> C2 -> exfiltration/theft.
+
+8. SUMMARY COMPLETENESS:
+   - The summary is concise but lacks a specific actor attribution (though none is provided in the facts, so this is acceptable).
+   - The summary explicitly details the exfiltration mechanism (web injection into explorer.exe for credential theft).
+   - The summary states the outcome (infection confirmed).
+
+RECOMMENDATIONS:
+   - Ensure all future ledger entries maintain strict consistency between the 'value' field and the 'iocs' array.
+   - The triage ledger is approved for final reporting.

@@ -1,0 +1,10 @@
+{
+  "case_id": "Rocba-Memory",
+  "target": "Unknown",
+  "intent_verdict": "Inconclusive",
+  "summary": "Analysis failed due to unsupported file format or empty extraction. This does not indicate a clean system; it indicates a lack of parseable telemetry. EVIDENCE COVERAGE MATRIX: [Filesystem: NO] [Registry: NO] [EventLogs: NO] [NetworkLogs: NO]",
+  "null_hypothesis": "The system may be clean, but lack of data prevents forensic verification.",
+  "case_confidence": 0,
+  "mitre_ttps": [],
+  "artifacts": []
+}

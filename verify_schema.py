@@ -1,50 +1,36 @@
-import sys
 import json
+import sys
 
-def verify_schema(filepath):
+def verify_ledger(filepath):
     try:
-        with open(filepath, 'r') as f:
+        with open(filepath, 'r', encoding='utf-8') as f:
             data = json.load(f)
-            
-        # 1. Check Root Keys
-        required_root = ['case_id', 'target', 'intent_verdict', 'summary', 'artifacts']
-        for key in required_root:
-            if key not in data:
-                print(f"[-] Schema Error: Missing root key '{key}'")
-                sys.exit(1)
-                
-        # 2. Check Artifact Keys & Strict Confidence Values
-        required_artifact_keys = [
-            'name', 'type', 'value', 'description', 'confidence', 
-            'recommended_validation', 'risk_score', 'priority', 'review_status'
-        ]
-        
-        valid_confidence_levels = ['low', 'medium', 'high']
-        
-        for idx, artifact in enumerate(data['artifacts']):
-            for key in required_artifact_keys:
-                if key not in artifact:
-                    print(f"[-] Schema Error: Artifact #{idx} missing key '{key}'")
-                    sys.exit(1)
-            
-            # STRICT ENFORCEMENT: Block "PENDING VALIDATION" and other hallucinations
-            conf_value = str(artifact.get('confidence', '')).strip().lower()
-            if conf_value not in valid_confidence_levels:
-                print(f"[-] Schema Error: Artifact #{idx} has invalid confidence '{conf_value}'. Must be Low, Medium, or High.")
-                sys.exit(1)
-                
-        print("[+] Schema validation passed.")
-        sys.exit(0)
-        
-    except json.JSONDecodeError as e:
-        print(f"[-] JSON Parsing Error: {e}")
-        sys.exit(1)
     except Exception as e:
-        print(f"[-] Unexpected Error: {e}")
+        print(f"JSON Parse Error: {e}")
         sys.exit(1)
+
+    # Define the strict expected schema
+    root_keys = {'case_id', 'target', 'intent_verdict', 'summary', 'null_hypothesis', 'case_confidence', 'mitre_ttps', 'artifacts'}
+    artifact_keys = {'name', 'type', 'value', 'description', 'presence_confidence', 'execution_confidence', 'intent_confidence', 'recommended_validation', 'risk_score', 'priority', 'review_status', 'iocs'}
+
+    # Validate Root Level
+    missing_root = root_keys - set(data.keys())
+    if missing_root:
+        print(f"Schema Error: Missing root keys: {missing_root}")
+        sys.exit(1)
+
+    # Validate Artifact Level
+    for idx, art in enumerate(data.get('artifacts', [])):
+        missing_art = artifact_keys - set(art.keys())
+        if missing_art:
+            print(f"Schema Error: Artifact {idx} missing keys: {missing_art}")
+            sys.exit(1)
+
+    # If we make it here, the schema is perfect
+    sys.exit(0)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python3 verify_schema.py <json_file>")
+        print("Usage: python3 verify_schema.py <path_to_ledger.json>")
         sys.exit(1)
-    verify_schema(sys.argv[1])
+    verify_ledger(sys.argv[1])

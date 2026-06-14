@@ -1,0 +1,186 @@
+[
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Incident Type",
+    "artifact_value": "war_driving_credential_theft",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": []
+  },
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Case Description",
+    "artifact_value": "On 09/20/04, a Dell CPi laptop serial VLQLW was found abandoned with a wireless PCMCIA card and a homemade 802.11b antenna. The suspect Greg Schardt alias Mr. Evil was war driving near public WiFi hotspots to intercept traffic and steal credentials.",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "registry",
+    "artifact_name": "Hostname",
+    "artifact_value": "N-1A9ODN6ZXK4LQ",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "N-1A9ODN6ZXK4LQ"
+    ]
+  },
+  {
+    "artifact_type": "registry",
+    "artifact_name": "Registered Owner",
+    "artifact_value": "Greg",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": []
+  },
+  {
+    "artifact_type": "registry",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "The default username is Mr. Evil, indicative of an attacker alias | The registered owner matches the identified suspect",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "login.passport.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": [
+      "login.passport.com"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "mobile.msn.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": [
+      "mobile.msn.com"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "pcap file with intercepted traffic from third-party devices | The victim was using a Windows CE Pocket PC at a public hotspot",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Observed Email",
+    "artifact_value": "mrevilrulez@yahoo.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "mrevilrulez@yahoo.com"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "chataholics.undernet",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": [
+      "chataholics.undernet"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "cybercafe.undernet",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": [
+      "cybercafe.undernet"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "elite.hackers.undernet",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": [
+      "elite.hackers.undernet"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "evilfork.efnet",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": [
+      "evilfork.efnet"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "iso-warez.efnet",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": [
+      "iso-warez.efnet"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "thedarktower.afternet",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": [
+      "thedarktower.afternet"
+    ]
+  },
+  {
+    "artifact_type": "bash_history",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Presence in hacking channels (#Elite.Hackers.UnderNet, #evilfork.EFnet) | The nickname mrevilrulez matches the email mrevilrulez@yahoo.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "file_metadata",
+    "artifact_name": "MD5 Hash",
+    "artifact_value": "aee4fcd9301c03b3b054623ca261959a",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "aee4fcd9301c03b3b054623ca261959a"
+    ]
+  },
+  {
+    "artifact_type": "file_metadata",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Presence of hacking tool executables in Recycle Bin without permanent deletion | NetStumbler is a specific tool for war driving",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Observed Email",
+    "artifact_value": "whoknowsme@sbcglobal.net",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "whoknowsme@sbcglobal.net"
+    ]
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "SMTP address different from primary email (possible evasion) | Use of newsgroups for alternative communication",
+    "source_file": "cases/INC-2026-VIGIA-REAL-001/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "sequence": 1,
+    "event_description": "Actor connects to the university network via an unsecured dormitory WiFi router to establish anonymous access.",
+    "artifacts_involved": [
+      "Forensic Anomaly"
+    ],
+    "mitre_ttp": "T1585.001",
+    "confidence": "Medium"
+  },
+  {
+    "sequence": 2,
+    "event_description": "Actor accesses Gmail account jcoach@gmail.com from internal IP 192.168.15.4, transmitting session cookies in plaintext over HTTP.",
+    "artifacts_involved": [
+      "Internal IP",
+      "Suspected Actor Email",
+      "Forensic Anomaly"
+    ],
+    "mitre_ttp": "T1071.001",
+    "confidence": "High"
+  },
+  {
+    "sequence": 3,
+    "event_description": "Actor utilizes the willselfdestruct.com service to send anonymous harassment emails to Professor Lily Tuckrige.",
+    "artifacts_involved": [
+      "Domain",
+      "Forensic Anomaly"
+    ],
+    "mitre_ttp": "T1566.001",
+    "confidence": "High"
+  }
+]

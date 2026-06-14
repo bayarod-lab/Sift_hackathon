@@ -1,0 +1,26 @@
+QA AUDIT: INC-2026-surface_physical
+ANALYST: Junior Analyst
+REVIEWER: Senior Forensic Analyst
+
+1. FACTUAL ACCURACY:
+The analyst correctly identified the presence of standard application suites (Skype, OneDrive, Apple Software Update). However, the "Chrome Extensions" artifact entry is vague. The ledger lists multiple IDs but fails to extract or document the specific extension names or manifest details available in the filesystem metadata. The "Execution Confidence" is marked as "Low," which is appropriate given the lack of execution logs, but the "Risk Score" of 30 seems arbitrary without a specific threat intelligence hit.
+
+2. ROLE ASSIGNMENT:
+The analyst failed to explicitly define the Actor, Victim, and Infrastructure. While the target ("defaultprinter") is identified, the lack of network telemetry makes the "Infrastructure" section impossible to fill, but this should have been explicitly stated as "Unknown/Not Observed" rather than omitted.
+
+3. MITRE VALIDATION:
+The MITRE TTPs section is empty. This is acceptable given the evidence, but the analyst should have noted *why* no TTPs were mapped (i.e., "No evidence of execution or persistence mechanisms observed").
+
+4. SEMANTIC BIAS:
+The analysis is balanced. The analyst correctly avoided labeling standard software (OneDrive, Skype) as malicious, which is a common pitfall for junior analysts. The null hypothesis is sound and appropriately cautious.
+
+5. NULL HYPOTHESIS:
+The null hypothesis is well-constructed. It correctly identifies the system as a standard workstation and acknowledges that the extensions require verification rather than assuming malicious intent.
+
+6. IOC COMPLETENESS:
+The ledger is missing actionable IOCs. Even if the extensions are not confirmed malicious, the specific Chrome Extension IDs (e.g., 'aapocclcgogkmnckokdopfmhonfmgoek') should be listed as artifacts/IOCs for future correlation, even if they are currently benign. The analyst should have populated the 'iocs' array with these IDs to facilitate future hunting.
+
+RECOMMENDATIONS:
+- Populate the 'iocs' field in the ledger with the Chrome Extension IDs found in the facts.json.
+- Explicitly state "Infrastructure: Not Observed" in the summary to show the analyst considered the network component.
+- Ensure future triage includes the specific names of extensions found, not just the IDs.

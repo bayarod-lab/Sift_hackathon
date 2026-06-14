@@ -1,0 +1,109 @@
+{
+  "case_id": "VIGIA-REAL-003",
+  "target": "Victim: Windows Server 2008 Standard (XAMPP)",
+  "intent_verdict": "Unauthorized/Policy Violation",
+  "summary": "The web server (Victim) was compromised via SQL injection in DVWA, resulting in the deployment of PHP webshells and unauthorized persistence. The activity is consistent with an unauthorized training exercise rather than a malicious external threat. The actor created two local user accounts ('user1' and 'hacker') and modified firewall rules to enable RDP access from the internal subnet. EVIDENCE COVERAGE MATRIX: [Filesystem: YES] [Registry: NO] [EventLogs: YES] [NetworkLogs: YES]",
+  "null_hypothesis": "The activity is part of an authorized penetration test or security training exercise using DVWA. This is refuted by the creation of persistent local user accounts and firewall modifications, which exceed the scope of authorized training, confirming the activity as an unauthorized policy violation.",
+  "case_confidence": 95,
+  "mitre_ttps": [
+    "T1136.001",
+    "T1190",
+    "T1505.003",
+    "T1562.004"
+  ],
+  "artifacts": [
+    {
+      "name": "Webshells",
+      "type": "file_metadata",
+      "value": "tmpukudk.php, tmpbiwuc.php",
+      "description": "PHP webshells identified in the web directory with random naming conventions.",
+      "presence_confidence": "High",
+      "execution_confidence": "High",
+      "intent_confidence": "High",
+      "recommended_validation": "Analyze file content for malicious payloads and correlate with web server access logs.",
+      "risk_score": 95,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "tmpukudk.php",
+        "tmpbiwuc.php"
+      ]
+    },
+    {
+      "name": "Unauthorized User Accounts",
+      "type": "user_account",
+      "value": "user1, hacker",
+      "description": "Two unauthorized user accounts created with consecutive SIDs.",
+      "presence_confidence": "High",
+      "execution_confidence": "High",
+      "intent_confidence": "High",
+      "recommended_validation": "Audit system event logs for account creation events and verify against authorized user list.",
+      "risk_score": 90,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": []
+    },
+    {
+      "name": "Attacker IP",
+      "type": "network_flow",
+      "value": "192.168.56.102",
+      "description": "Source IP identified as the origin of SQL injection and subsequent exploitation; consistent with Kali Linux VM.",
+      "presence_confidence": "High",
+      "execution_confidence": "High",
+      "intent_confidence": "High",
+      "recommended_validation": "Correlate IP with firewall logs and VPN/DHCP logs to identify source machine.",
+      "risk_score": 85,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "192.168.56.102"
+      ]
+    },
+    {
+      "name": "SQL Injection Tooling",
+      "type": "network_flow",
+      "value": "sqlmap",
+      "description": "User-Agent string indicating the use of sqlmap for automated SQL injection.",
+      "presence_confidence": "High",
+      "execution_confidence": "High",
+      "intent_confidence": "High",
+      "recommended_validation": "Review web server logs for full request/response payloads associated with this User-Agent.",
+      "risk_score": 80,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": []
+    },
+    {
+      "name": "User-Agent Indicator",
+      "type": "network_flow",
+      "value": "ies/sqli",
+      "description": "Specific User-Agent string identified as a high-fidelity indicator for this activity.",
+      "presence_confidence": "High",
+      "execution_confidence": "High",
+      "intent_confidence": "High",
+      "recommended_validation": "Hunt for this User-Agent across all network logs.",
+      "risk_score": 80,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "ies/sqli"
+      ]
+    },
+    {
+      "name": "IP Address",
+      "type": "network_flow",
+      "value": "192.168.56.0",
+      "description": "Recovered IOC.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "None",
+      "recommended_validation": "Corroborate telemetry.",
+      "risk_score": 50,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "192.168.56.0"
+      ]
+    }
+  ]
+}

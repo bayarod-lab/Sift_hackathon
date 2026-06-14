@@ -1,0 +1,140 @@
+[
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Incident Type",
+    "artifact_value": "banking_trojan_credential_theft",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": []
+  },
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Case Description",
+    "artifact_value": "Memory dump cridex.vmem from a Windows XP SP2 machine infected with the Cridex banking trojan (Feodo/Bugat, predecessor of Dridex). The malware injects code into explorer.exe and communicates with C&C servers to steal banking credentials.",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "explorer.exe",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "explorer.exe"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "wuauclt.exe",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "wuauclt.exe"
+    ]
+  },
+  {
+    "artifact_type": "process_list",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "reader_sl.exe hidden from the standard process list (psxview discrepancy) | Parent process ID of explorer.exe (1464) does not appear in pslist/psscan, indicating process hollowing",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "41.168.5.140",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "41.168.5.140"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "125.19.103.198",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "125.19.103.198"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "188.40.0.138",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "188.40.0.138"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "190.81.107.70",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "190.81.107.70"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "85.214.204.32",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "85.214.204.32"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "210.56.23.100",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "210.56.23.100"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "211.44.250.173",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "211.44.250.173"
+    ]
+  },
+  {
+    "artifact_type": "memory_string",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Multiple outbound connections to IPs in high-risk countries | Mutex '746bbf3569adEncrypt' indicates malicious cryptographic activity",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Web injection code in explorer.exe memory targeting banking pages | Credential strings found in memory of injected process",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "file_metadata",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Masquerading: malware uses a legitimate Adobe process name | Code injection into explorer.exe detected by malfind",
+    "source_file": "cases/INC-2026-VIGIA-REAL-008/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  }
+]

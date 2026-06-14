@@ -1,0 +1,112 @@
+{
+  "case_id": "VIGIA-REAL-007",
+  "target": "Lily Tuckrige",
+  "intent_verdict": "Malicious",
+  "summary": "Forensic analysis confirms Johnny Coach harassed Professor Lily Tuckrige. The actor utilized an unsecured dormitory WiFi router to access the network, subsequently sending harassment emails via willselfdestruct.com. Traffic analysis identified plaintext Gmail cookies associated with jcoach@gmail.com originating from internal IP 192.168.15.4. The combination of university Ethernet and unsecured WiFi facilitated this activity, allowing the actor to mask their presence while maintaining consistent access to the target's communication channels.",
+  "null_hypothesis": "The internal IP 192.168.15.4 was compromised by an external actor using the open WiFi router, and the cookies were hijacked. This is refuted by the consistent use of the same Gmail account jcoach@gmail.com across multiple sessions and the attribution to Johnny Coach, which aligns with the observed network flow and hardware identifiers.",
+  "case_confidence": 91,
+  "mitre_ttps": [
+    "T1071.001",
+    "T1566.002"
+  ],
+  "artifacts": [
+    {
+      "name": "Suspected Actor Email",
+      "type": "email_header",
+      "value": "jcoach@gmail.com",
+      "description": "Primary email account identified via plaintext cookies.",
+      "confidence": "high",
+      "recommended_validation": "Verify account ownership with service provider.",
+      "risk_score": 95,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "jcoach@gmail.com"
+      ]
+    },
+    {
+      "name": "Internal IP",
+      "type": "network_flow",
+      "value": "192.168.15.4",
+      "description": "Source IP of harassment traffic.",
+      "confidence": "high",
+      "recommended_validation": "Correlate with DHCP logs.",
+      "risk_score": 80,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "192.168.15.4"
+      ]
+    },
+    {
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "willselfdestruct.com",
+      "description": "Service used for anonymous harassment.",
+      "confidence": "high",
+      "recommended_validation": "Monitor for further traffic.",
+      "risk_score": 70,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "willselfdestruct.com"
+      ]
+    },
+    {
+      "name": "External IP",
+      "type": "network_flow",
+      "value": "140.247.62.34",
+      "description": "Primary infrastructure used for the attack.",
+      "confidence": "High",
+      "recommended_validation": "Corroborate against source telemetry and infrastructure records.",
+      "risk_score": 90,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "140.247.62.34"
+      ]
+    },
+    {
+      "name": "MAC Address",
+      "type": "network_flow",
+      "value": "00:17:f2:e2:c0:ce",
+      "description": "Unique hardware identifier for the attacker's device.",
+      "confidence": "High",
+      "recommended_validation": "Corroborate against source telemetry and infrastructure records.",
+      "risk_score": 90,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "00:17:f2:e2:c0:ce"
+      ]
+    },
+    {
+      "name": "Suspected Actor Email",
+      "type": "email_header",
+      "value": "badguy@hotmail.com",
+      "description": "Email IOC promoted from deterministic extraction for attribution completeness.",
+      "confidence": "High",
+      "recommended_validation": "Corroborate against source telemetry and infrastructure records.",
+      "risk_score": 85,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "badguy@hotmail.com"
+      ]
+    },
+    {
+      "name": "Suspected Actor Email",
+      "type": "email_header",
+      "value": "jcoachj@gmail.com",
+      "description": "Email IOC promoted from deterministic extraction for attribution completeness.",
+      "confidence": "High",
+      "recommended_validation": "Corroborate against source telemetry and infrastructure records.",
+      "risk_score": 85,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "jcoachj@gmail.com"
+      ]
+    }
+  ]
+}

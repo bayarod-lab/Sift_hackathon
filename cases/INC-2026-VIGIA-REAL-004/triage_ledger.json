@@ -1,83 +1,72 @@
 {
   "case_id": "VIGIA-REAL-004",
-  "target": "Unknown",
+  "target": "Unknown Endpoint",
   "intent_verdict": "Malicious",
-  "summary": "The investigation identified multiple indicators of compromise including a suspicious executable download, persistence mechanism via a service, and unauthorized hosts file modification. The activity suggests a malware infection chain. Coverage: Filesystem=YES; Registry=NO; EventLogs=NO;",
-  "case_confidence": 90,
-  "mitre_ttps": [],
+  "summary": "The investigation confirms a malware infection where a malicious executable masqueraded as the SysInternals Suite. The malware performed unauthorized network communication to malware430.com, modified the hosts file, installed a fake Windows service mimicking VMware to maintain persistence, and attempted anti-forensic measures by deleting prefetch files.",
+  "null_hypothesis": "The user intentionally installed a legitimate SysInternals tool which triggered false positive security alerts. This is refuted by the presence of unauthorized network connections to known malicious domains (malware430.com), the modification of the hosts file, and the installation of a service mimicking VMware, which are inconsistent with legitimate SysInternals behavior.",
+  "case_confidence": 95,
+  "mitre_ttps": [
+    "T1036.005",
+    "T1070.004",
+    "T1071.001",
+    "T1543.003"
+  ],
   "artifacts": [
     {
-      "name": "SysInternals.exe",
-      "type": "file",
-      "value": "C:\\Users\\Public\\Downloads\\SysInternals.exe",
-      "description": "Suspicious executable found in public downloads directory.",
-      "confidence": "high",
-      "recommended_validation": "Verify file hash against known good repositories and perform static analysis.",
-      "risk_score": 85,
+      "name": "Malicious Executable Hash",
+      "type": "file_metadata",
+      "value": "72e6d1728a546c2f3ee32c063ed09fa6ba8c46ac33b0dd2e354087c1ad26ef48",
+      "description": "SHA256 hash of the identified malware downloader.",
+      "confidence": 100,
+      "recommended_validation": "Check endpoint logs for execution events.",
+      "risk_score": 100,
       "priority": "High",
-      "review_status": "completed",
+      "review_status": "pending",
       "iocs": [
-        "C:\\Users\\Public\\Downloads\\SysInternals.exe",
         "72e6d1728a546c2f3ee32c063ed09fa6ba8c46ac33b0dd2e354087c1ad26ef48"
       ]
     },
     {
-      "name": "Malicious Download URL",
-      "type": "network",
-      "value": "http://www.malware430.com/html/VMwareUpdate.exe",
-      "description": "External URL associated with malicious file download.",
-      "confidence": "high",
-      "recommended_validation": "Check firewall logs for connection attempts and block domain.",
+      "name": "C2 Infrastructure Domain",
+      "type": "network_flow",
+      "value": "malware430.com",
+      "description": "Domain used for secondary payload delivery and C2 communication.",
+      "confidence": 90,
+      "recommended_validation": "Block domain at perimeter firewall and DNS.",
       "risk_score": 90,
       "priority": "High",
-      "review_status": "completed",
+      "review_status": "pending",
       "iocs": [
-        "http://www.malware430.com/html/VMwareUpdate.exe",
+        "malware430.com",
         "www.malware430.com"
       ]
     },
     {
-      "name": "vmtoolsIO.exe",
-      "type": "file",
-      "value": "c:\\Windows\\vmtoolsIO.exe",
-      "description": "Suspicious executable located in Windows directory.",
-      "confidence": "high",
-      "recommended_validation": "Check file signature and perform behavioral analysis.",
-      "risk_score": 80,
-      "priority": "High",
-      "review_status": "completed",
-      "iocs": [
-        "c:\\Windows\\vmtoolsIO.exe"
-      ]
-    },
-    {
-      "name": "VMwareIOHelperService",
-      "type": "service",
-      "value": "VMwareIOHelperService",
-      "description": "Service created for potential persistence.",
-      "confidence": "high",
-      "recommended_validation": "Inspect service configuration and associated binary path.",
+      "name": "C2 Infrastructure IP",
+      "type": "network_flow",
+      "value": "2.0.0.1",
+      "description": "IP address associated with the malicious domain.",
+      "confidence": 85,
+      "recommended_validation": "Investigate traffic logs for connections to this IP.",
       "risk_score": 85,
       "priority": "High",
-      "review_status": "completed",
+      "review_status": "pending",
       "iocs": [
-        "VMwareIOHelperService"
+        "2.0.0.1"
       ]
     },
     {
-      "name": "Hosts File Modification",
-      "type": "configuration",
-      "value": "sysinternals.com and malware430.com redirected to 192.168.x.x",
-      "description": "Unauthorized modification of hosts file to redirect traffic.",
-      "confidence": "high",
-      "recommended_validation": "Review hosts file content and check for unauthorized changes.",
-      "risk_score": 75,
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "sysinternals.com",
+      "description": "Recovered IOC.",
+      "confidence": "High",
+      "recommended_validation": "Corroborate telemetry.",
+      "risk_score": 50,
       "priority": "Medium",
-      "review_status": "completed",
+      "review_status": "pending",
       "iocs": [
-        "sysinternals.com",
-        "malware430.com",
-        "192.168.x.x"
+        "sysinternals.com"
       ]
     }
   ]

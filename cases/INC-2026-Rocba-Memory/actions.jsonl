@@ -1,0 +1,3 @@
+{"timestamp": "2026-06-14T09:53:13Z", "actor": "TOOL_EXEC", "action": "Executed: 7z x /mnt/hgfs/Vm shared folder/Rocba-Memory.zip -ocases/INC-2026-Rocba-Memory/extractions/raw_triage"}
+{"timestamp": "2026-06-14T09:53:13Z", "actor": "SYSTEM", "action": "Automated pipeline extracted /mnt/hgfs/Vm shared folder/Rocba-Memory.zip to cases/INC-2026-Rocba-Memory/extractions/summarized_evidence.txt"}
+{"timestamp": "2026-06-14T09:53:18Z", "actor": "AI_AGENT", "action": "Completed Pass 1: Fact & IOC Extraction."}

@@ -1,58 +1,108 @@
 [
   {
-    "artifact_type": "email_header",
-    "artifact_name": "Return-Path",
-    "artifact_value": "simsong@xy.dreamhostps.com",
+    "artifact_type": "case_context",
+    "artifact_name": "Incident Type",
+    "artifact_value": "spear_phishing_exfiltration",
     "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
-    "confidence": "high"
+    "confidence": "high",
+    "iocs": []
+  },
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Case Description",
+    "artifact_value": "CFO Jean Jones of M57.Biz received spoofed emails apparently from president Alison requesting a spreadsheet with confidential employee data. The attacker manipulated the Reply-To to exfiltrate the data to tuckergorge@gmail.com. Jean acted in good faith but the attack resulted in exfiltration of confidential documents.",
+    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
   },
   {
     "artifact_type": "email_header",
-    "artifact_name": "Reply-To",
+    "artifact_name": "Observed Email",
+    "artifact_value": "alison@m57.biz",
+    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "alison@m57.biz"
+    ]
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Observed Email",
+    "artifact_value": "jean@m57.biz",
+    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "jean@m57.biz"
+    ]
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Observed Email",
+    "artifact_value": "simsong@xy.dreamhostps.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "simsong@xy.dreamhostps.com"
+    ]
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Actual Return-Path (simsong@xy.dreamhostps.com) does not match the From address (alison@m57.biz) | The note 'do not include the text' is highly suspicious as an attempt to destroy evidence",
+    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Observed Email",
     "artifact_value": "tuckergorge@gmail.com",
     "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
-    "confidence": "high"
+    "confidence": "high",
+    "iocs": [
+      "tuckergorge@gmail.com"
+    ]
+  },
+  {
+    "artifact_type": "email_header",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Reply-To changed from alison@m57.biz to tuckergorge@gmail.com between consecutive emails | The same spoofed Return-Path indicates a coordinated phishing campaign | REPLY-TO CHANGE between consecutive emails is the definitive signature of the spoofing attack",
+    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
   },
   {
     "artifact_type": "file_metadata",
-    "artifact_name": "m57biz.xls",
-    "artifact_value": "C:/Documents and Settings/Jean/Desktop/m57biz.xls",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "File with SSNs and salaries stored unencrypted on Desktop | The file was created minutes before being sent to the malicious Reply-To",
     "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
-    "confidence": "high"
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "bash_history",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Alison's confusion proves she did not send the original email | The 6-hour window between first email and attacker's confirmation shows a compressed attack window",
+    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "rcstatus.htm",
+    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": [
+      "rcstatus.htm"
+    ]
   },
   {
     "artifact_type": "process_list",
-    "artifact_name": "ipconfig.exe",
-    "artifact_value": "deleted",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Deletion of system binaries is an indicator of anti-forensics or prior compromise | Presence of HTML with fake Microsoft prompts suggests additional social engineering techniques",
     "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
-    "confidence": "medium"
-  },
-  {
-    "artifact_type": "process_list",
-    "artifact_name": "net.exe",
-    "artifact_value": "deleted",
-    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
-    "confidence": "medium"
-  },
-  {
-    "artifact_type": "software_installation",
-    "artifact_name": "AIM6",
-    "artifact_value": "installed with suspicious toolbar bundles",
-    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
-    "confidence": "medium"
-  },
-  {
-    "artifact_type": "cached_file",
-    "artifact_name": "rcstatus.htm",
-    "artifact_value": "cached HTML file",
-    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
-    "confidence": "medium"
-  },
-  {
-    "artifact_type": "cached_file",
-    "artifact_name": "InstallStatus[1].htm",
-    "artifact_value": "cached HTML file",
-    "source_file": "cases/INC-2026-VIGIA-REAL-006/extractions/telemetry_source.json",
-    "confidence": "medium"
+    "confidence": "medium",
+    "iocs": []
   }
 ]

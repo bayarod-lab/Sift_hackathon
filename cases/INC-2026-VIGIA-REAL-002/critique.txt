@@ -1,0 +1,24 @@
+QA AUDIT REPORT: INC-2026-VIGIA-REAL-002
+AUDITOR: Senior Forensic Analyst
+DATE: 2024-05-22
+
+1. FACTUAL ACCURACY
+The findings are factually accurate and well-supported by the provided telemetry. The analyst correctly identified the correlation between the anti-forensic tool installation and the exfiltration timeline. No overstatements or mischaracterizations were identified.
+
+2. ROLE ASSIGNMENT
+The roles are clearly defined. The subject (Sr. Informant) is correctly identified as the Actor, and the infrastructure (10.11.11.128/129) is appropriately categorized as the staging/exfiltration point. No conflation of identities was observed.
+
+3. MITRE VALIDATION
+The MITRE TTP mappings (T1048, T1078, T1485, T1567.002) are highly relevant and explicitly supported by the artifacts. The analyst successfully linked the tool usage (CCleaner/Eraser) to T1485 and the network/email activity to the exfiltration techniques.
+
+4. SEMANTIC BIAS
+The classification of 'Malicious' is justified. The analyst avoided the trap of labeling policy violations (e.g., using personal email) as inherently malicious by providing the necessary context of 'conspiratorial language' and 'anti-forensic tool usage' to support the intent verdict.
+
+5. NULL HYPOTHESIS
+The current null hypothesis is weak. While it attempts to provide an alternative explanation, it fails to address the 'conspiratorial language' found in the email headers. A more robust null hypothesis would be: "The subject was attempting to bypass DLP controls for personal convenience rather than malicious exfiltration, and the anti-forensic tools were used to hide personal browsing history rather than corporate data destruction." The current hypothesis regarding 'security research' is not supported by the evidence.
+
+6. IOC COMPLETENESS
+All IOCs identified in facts.json have been successfully captured and included in the triage ledger.
+
+CONCLUSION
+The triage ledger is of high quality. Please refine the Null Hypothesis as noted above to better reflect the evidence. No further action required on the JSON files.

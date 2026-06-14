@@ -1,63 +1,97 @@
 {
   "case_id": "VIGIA-REAL-006",
-  "target": "Unknown",
-  "intent_verdict": "Suspicious",
-  "summary": "Analysis of telemetry indicates potential reconnaissance activity (deleted network tools) and presence of legacy communication software (AIM6). Presence of 'm57biz.xls' and external email headers suggests potential data staging or exfiltration. Coverage: Filesystem=YES; Registry=NO; EventLogs=NO;",
+  "target": "CFO Jean Jones (M57.Biz)",
+  "intent_verdict": "Malicious",
+  "summary": "The incident involved a targeted spear-phishing attack against the CFO of M57.Biz. The attacker spoofed the President's email address (alison@m57.biz) and manipulated the Reply-To header to redirect sensitive employee data to an external Gmail account (tuckergorge@gmail.com). The Return-Path (simsong@xy.dreamhostps.com) indicates the relay infrastructure used for the spoofed message. The attack successfully resulted in the exfiltration of unencrypted confidential documents containing SSNs and salary information.",
+  "null_hypothesis": "The null hypothesis is that the email exchange was a legitimate business request from the President. This is refuted by the forensic evidence: the Return-Path (simsong@xy.dreamhostps.com) does not match the From address, and the Reply-To header was explicitly altered to an external, non-corporate address.",
+  "case_confidence": 95,
+  "mitre_ttps": [
+    "T1566.002",
+    "T1567"
+  ],
   "artifacts": [
     {
-      "name": "Email Headers",
+      "name": "Victim Email",
       "type": "email_header",
-      "value": "simsong@xy.dreamhostps.com / tuckergorge@gmail.com",
-      "description": "External email communication artifacts identified.",
-      "confidence": "high",
-      "recommended_validation": "Pivot to browser history or mail client artifacts to determine if these were used for exfiltration.",
+      "value": "jean@m57.biz",
+      "description": "Targeted CFO account used to receive the phishing email.",
+      "confidence": 100,
+      "recommended_validation": "Review mailbox access logs for unauthorized logins.",
+      "risk_score": 80,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "jean@m57.biz"
+      ]
+    },
+    {
+      "name": "Spoofed Actor Email",
+      "type": "email_header",
+      "value": "alison@m57.biz",
+      "description": "Spoofed identity of the company President used to deceive the CFO.",
+      "confidence": 100,
+      "recommended_validation": "Verify email headers for SPF/DKIM/DMARC failures.",
+      "risk_score": 90,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "alison@m57.biz"
+      ]
+    },
+    {
+      "name": "Exfiltration Destination",
+      "type": "email_header",
+      "value": "tuckergorge@gmail.com",
+      "description": "External email address used as the Reply-To target for data exfiltration.",
+      "confidence": 100,
+      "recommended_validation": "Block domain/address and investigate associated activity.",
+      "risk_score": 95,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "tuckergorge@gmail.com"
+      ]
+    },
+    {
+      "name": "Malicious Return-Path",
+      "type": "email_header",
+      "value": "simsong@xy.dreamhostps.com",
+      "description": "Return-Path indicating the relay infrastructure used for the spoofed email.",
+      "confidence": 90,
+      "recommended_validation": "Investigate infrastructure associated with dreamhostps.com.",
+      "risk_score": 85,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "simsong@xy.dreamhostps.com",
+        "dreamhostps.com"
+      ]
+    },
+    {
+      "name": "Exfiltrated Data File",
+      "type": "file_metadata",
+      "value": "Confidential Employee Data (SSNs/Salaries)",
+      "description": "Unencrypted file created on Desktop and sent to attacker.",
+      "confidence": 90,
+      "recommended_validation": "Audit file access logs and DLP alerts.",
+      "risk_score": 90,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": []
+    },
+    {
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "rcstatus.htm",
+      "description": "Recovered IOC.",
+      "confidence": 100,
+      "recommended_validation": "Corroborate telemetry.",
       "risk_score": 50,
       "priority": "Medium",
-      "review_status": "pending"
-    },
-    {
-      "name": "m57biz.xls",
-      "type": "file_metadata",
-      "value": "C:/Documents and Settings/Jean/Desktop/m57biz.xls",
-      "description": "Business document located on user desktop.",
-      "confidence": "high",
-      "recommended_validation": "Verify file contents and access logs.",
-      "risk_score": 40,
-      "priority": "Medium",
-      "review_status": "pending"
-    },
-    {
-      "name": "Network Tools (ipconfig.exe/net.exe)",
-      "type": "process_list",
-      "value": "deleted",
-      "description": "Network reconnaissance tools deleted from system.",
-      "confidence": "medium",
-      "recommended_validation": "Check MFT/UsnJrnl for deletion timestamps and Prefetch/Shimcache for execution history.",
-      "risk_score": 60,
-      "priority": "High",
-      "review_status": "pending"
-    },
-    {
-      "name": "AIM6",
-      "type": "software_installation",
-      "value": "installed with suspicious toolbar bundles",
-      "description": "Legacy IM software installed with potentially unwanted toolbars.",
-      "confidence": "medium",
-      "recommended_validation": "Audit communication logs and contact lists.",
-      "risk_score": 40,
-      "priority": "Medium",
-      "review_status": "pending"
-    },
-    {
-      "name": "Cached HTML Files",
-      "type": "cached_file",
-      "value": "rcstatus.htm / InstallStatus[1].htm",
-      "description": "Cached browser/installation status files.",
-      "confidence": "medium",
-      "recommended_validation": "None",
-      "risk_score": 5,
-      "priority": "Low",
-      "review_status": "pending"
+      "review_status": "pending",
+      "iocs": [
+        "rcstatus.htm"
+      ]
     }
   ]
 }

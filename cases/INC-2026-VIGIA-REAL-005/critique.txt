@@ -1,13 +1,16 @@
-TECHNICAL REVIEW: INC-2026-VIGIA-REAL-005
-REVIEWER: Senior DFIR Examiner
-DATE: 2026-05-29
+QA Audit: INC-2026-VIGIA-REAL-005
 
-Junior Analyst, your triage ledger is superficial and fails to align with our established forensic methodologies. You have treated these artifacts as static objects rather than dynamic evidence requiring correlation. Address the following gaps immediately:
+1. FACTUAL ACCURACY: The ledger significantly overstates the findings. The presence of encryption (AES, BitLocker, GPG) is evidence of privacy-conscious behavior, not inherently "data staging or exfiltration." There is no evidence of data movement, staging, or unauthorized access provided in the facts. The leap from "encryption" to "exfiltration preparation" is an unsupported conclusion.
 
-1. FAILURE TO ADDRESS FORENSIC ANOMALIES (Sleuthkit Methodology):
-You have noted the existence of the AES-encrypted README file but completely ignored the forensic anomaly explicitly flagged in the telemetry: "Possible unencrypted version in system cache." Per our Sleuthkit SKILL.md, your priority must be the recovery of data from unallocated space or system caches. You have also failed to outline a recovery strategy for the BitLocker volume 'R2D2'. Simply noting the volume exists is insufficient; you must document the required steps to locate recovery keys (AD, USB, or backup files) as per standard forensic workflow.
+2. MITRE VALIDATION: The mapped TTPs (T1070.004 and T1560.001) are unsupported by the provided artifacts.
+   - T1070.004 (Indicator Removal: File Deletion): There is no evidence of file deletion in the facts.
+   - T1560.001 (Archive Collected Data: Archive via Utility): Encryption is not synonymous with archiving. There is no evidence of archive utilities (e.g., 7zip, WinRAR) being used.
+   These mappings appear to be speculative and do not align with the evidence.
 
-2. LACK OF EXECUTION CORRELATION (Windows Artifacts Methodology):
-You are treating these encrypted files as isolated entities. You have failed to correlate the creation and access of these files with execution evidence. Per our Windows Artifacts SKILL.md, you must parse Prefetch, Shimcache, and Amcache to identify the specific process responsible for creating the 'keys' file and the BitLocker volume. Without this correlation, you cannot establish a timeline of activity or identify the binary responsible for the anti-forensic measures. You must also check Registry artifacts (e.g., MountPoints2) to link the BitLocker volume to specific user activity.
+3. SEMANTIC BIAS: The analyst exhibits strong confirmation bias. The use of "R2D2" as a volume name is noted as an anomaly, but it is not evidence of malicious intent. The analyst assumes the user is an adversary rather than a potentially compromised or simply privacy-focused user. The language used ("conceal," "evade detection") is loaded and assumes guilt.
 
-Revise your triage plan to include these specific investigative steps.
+4. NULL HYPOTHESIS: The null hypothesis is weak and circular. It attempts to refute the "security-conscious user" theory by citing the use of encryption, which is exactly what a security-conscious user would do. It fails to address the possibility of account compromise or legitimate use cases (e.g., a user protecting personal data).
+
+5. IOC COMPLETENESS: The IOC section is empty. The volume label "R2D2", the file names of the encrypted README, and the GPG key metadata should be documented as indicators for further hunting.
+
+CONCLUSION: The ledger requires significant revision. Remove the unsupported MITRE mappings and reframe the summary to reflect that the activity is "suspicious" due to the *combination* of methods, but acknowledge that it is currently indistinguishable from legitimate privacy-conscious behavior without further evidence of unauthorized access or data movement.

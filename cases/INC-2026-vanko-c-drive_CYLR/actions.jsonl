@@ -1,7 +1,5 @@
-{"timestamp": "2026-06-13T08:57:27Z", "actor": "TOOL_EXEC", "action": "Executed: 7z x /mnt/hgfs/Vm shared folder/VANKO/vanko-c-drive.CYLR.7z -ocases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage"}
-{"timestamp": "2026-06-13T08:57:31Z", "actor": "SYSTEM", "action": "Automated pipeline extracted /mnt/hgfs/Vm shared folder/VANKO/vanko-c-drive.CYLR.7z to cases/INC-2026-vanko-c-drive_CYLR/extractions/summarized_evidence.txt"}
-{"timestamp": "2026-06-13T08:57:41Z", "actor": "AI_AGENT", "action": "Completed Pass 1: Fact Extraction."}
-{"timestamp": "2026-06-13T08:58:01Z", "actor": "TOOL_EXEC", "action": "Executed: python3 verify_schema.py cases/INC-2026-vanko-c-drive_CYLR/triage_ledger.json"}
-{"timestamp": "2026-06-13T08:58:01Z", "actor": "AI_AGENT", "action": "Completed validation and correlation loop."}
-{"timestamp": "2026-06-13T08:58:30Z", "actor": "AI_AGENT", "action": "Successfully integrated peer review feedback."}
-{"timestamp": "2026-06-13T08:59:00Z", "actor": "EXAMINER", "action": "Cryptographically signed and verified final report data."}
+{"timestamp": "2026-06-14T13:03:40Z", "actor": "TOOL_EXEC", "action": "Executed: 7z x /mnt/hgfs/Vm shared folder/VANKO/vanko-c-drive.CYLR.7z -ocases/INC-2026-vanko-c-drive_CYLR/extractions/raw_triage"}
+{"timestamp": "2026-06-14T13:03:48Z", "actor": "SYSTEM", "action": "Automated pipeline extracted /mnt/hgfs/Vm shared folder/VANKO/vanko-c-drive.CYLR.7z to cases/INC-2026-vanko-c-drive_CYLR/extractions/summarized_evidence.txt"}
+{"timestamp": "2026-06-14T13:04:11Z", "actor": "AI_AGENT", "action": "Completed Pass 1: Fact & IOC Extraction."}
+{"timestamp": "2026-06-14T13:04:54Z", "actor": "AI_AGENT", "action": "Successfully integrated peer review feedback."}
+{"timestamp": "2026-06-14T13:05:02Z", "actor": "AI_AGENT", "action": "Completed Pass 1.C: Timeline Reconstruction."}

@@ -1,0 +1,86 @@
+{
+  "case_id": "VIGIA-REAL-008",
+  "target": "Windows XP SP2 Workstation",
+  "intent_verdict": "Malicious",
+  "summary": "Memory analysis of cridex.vmem confirms infection by the Cridex banking trojan. The malware utilizes process hollowing to inject code into explorer.exe and masquerades as a legitimate Adobe process (reader_sl.exe). Multiple C2 connections to high-risk IP addresses (41.168.5.140, 125.19.103.198, 188.40.0.138, 190.81.107.70, 85.214.204.32, 210.56.23.100, 211.44.250.173) were identified. Credential theft is confirmed via web injection strings found in memory targeting banking pages. The infection lifecycle follows a progression from initial execution to process hollowing, persistence, C2 communication, and final exfiltration.",
+  "null_hypothesis": "The presence of reader_sl.exe and network connections could be attributed to legitimate software updates or administrative activity; however, this is refuted by the presence of process hollowing in explorer.exe, the creation of the '746bbf3569adEncrypt' mutex, and the identification of web injection code in memory, which are definitive indicators of malicious activity.",
+  "case_confidence": 95,
+  "mitre_ttps": [
+    "T1071",
+    "T1071.001"
+  ],
+  "artifacts": [
+    {
+      "name": "explorer.exe",
+      "type": "process",
+      "value": "explorer.exe",
+      "description": "Target process for code injection and web injection.",
+      "confidence": "high",
+      "recommended_validation": "Memory forensics analysis",
+      "risk_score": 90,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "explorer.exe"
+      ]
+    },
+    {
+      "name": "reader_sl.exe",
+      "type": "process",
+      "value": "reader_sl.exe",
+      "description": "Masquerading process hidden from standard process list.",
+      "confidence": "high",
+      "recommended_validation": "Process tree analysis",
+      "risk_score": 95,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": []
+    },
+    {
+      "name": "C2 IP Addresses",
+      "type": "network_flow",
+      "value": "41.168.5.140, 125.19.103.198, 188.40.0.138, 190.81.107.70, 85.214.204.32, 210.56.23.100, 211.44.250.173",
+      "description": "Outbound connections to known malicious C2 infrastructure.",
+      "confidence": "high",
+      "recommended_validation": "Network traffic analysis",
+      "risk_score": 85,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "41.168.5.140",
+        "125.19.103.198",
+        "188.40.0.138",
+        "190.81.107.70",
+        "85.214.204.32",
+        "210.56.23.100",
+        "211.44.250.173"
+      ]
+    },
+    {
+      "name": "Mutex",
+      "type": "memory_string",
+      "value": "746bbf3569adEncrypt",
+      "description": "Mutex indicating malicious cryptographic activity.",
+      "confidence": "medium",
+      "recommended_validation": "Mutex enumeration",
+      "risk_score": 60,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": []
+    },
+    {
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "wuauclt.exe",
+      "description": "Domain IOC promoted from deterministic extraction for completeness.",
+      "confidence": "High",
+      "recommended_validation": "Corroborate against source telemetry and infrastructure records.",
+      "risk_score": 60,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "wuauclt.exe"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "case_id": "rocba-cdrive",
+  "target": "fredr",
+  "intent_verdict": "Benign",
+  "summary": "The system is a standard workstation used for daily productivity tasks. Analysis of filesystem metadata confirms the presence of common productivity and communication software (Office, Skype, Slack, iCloud). No indicators of compromise or malicious activity were identified. Network telemetry was unavailable for further attribution. EVIDENCE COVERAGE MATRIX: [Filesystem: YES] [Registry: NO] [EventLogs: NO] [NetworkLogs: NO]",
+  "null_hypothesis": "The system is a standard user workstation used for daily productivity tasks. This is supported by the presence of common applications like Office, Skype, Slack, and iCloud, and the absence of malicious indicators.",
+  "case_confidence": 95,
+  "mitre_ttps": [],
+  "artifacts": [
+    {
+      "name": "fredr (Primary User)",
+      "type": "Account Name",
+      "value": "fredr",
+      "description": "Primary user account identified on the system.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "Low",
+      "recommended_validation": "Verify user account against Active Directory or local user management logs.",
+      "risk_score": 0,
+      "priority": "Low",
+      "review_status": "completed",
+      "iocs": []
+    },
+    {
+      "name": "Microsoft.SkypeApp",
+      "type": "Installed Application",
+      "value": "Microsoft.SkypeApp",
+      "description": "Standard communication application installed on the system.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "Low",
+      "recommended_validation": "Verify against gold image baseline.",
+      "risk_score": 0,
+      "priority": "Low",
+      "review_status": "completed",
+      "iocs": []
+    },
+    {
+      "name": "91750D7E.Slack",
+      "type": "Installed Application",
+      "value": "91750D7E.Slack",
+      "description": "Standard communication application installed on the system.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "Low",
+      "recommended_validation": "Verify against gold image baseline.",
+      "risk_score": 0,
+      "priority": "Low",
+      "review_status": "completed",
+      "iocs": []
+    },
+    {
+      "name": "AppleInc.iCloud",
+      "type": "Installed Application",
+      "value": "AppleInc.iCloud",
+      "description": "Standard cloud storage application installed on the system.",
+      "presence_confidence": "High",
+      "execution_confidence": "None",
+      "intent_confidence": "Low",
+      "recommended_validation": "Verify against gold image baseline.",
+      "risk_score": 0,
+      "priority": "Low",
+      "review_status": "completed",
+      "iocs": []
+    }
+  ]
+}

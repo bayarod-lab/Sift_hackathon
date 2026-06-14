@@ -1,72 +1,162 @@
 [
   {
-    "artifact_type": "file_path",
-    "artifact_name": "ShaderCache",
-    "artifact_value": "ProgramData/Intel/ShaderCache/SystemSettingsAdminFlows_1",
+    "artifact_type": "Account Name",
+    "artifact_name": "User Account",
+    "artifact_value": "fredr",
     "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "file_path",
-    "artifact_name": "CryptoSystemKey",
-    "artifact_value": "ProgramData/Microsoft/Crypto/SystemKeys/467d4675e14dc0211a90fc1330b64813_7f20f6d3-fd0e-4bcd-a4cd-7a5b0784f070",
+    "artifact_type": "User SID",
+    "artifact_name": "User SID",
+    "artifact_value": "S-1-5-21-528816539-567677750-276746561-1002",
     "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "file_path",
-    "artifact_name": "GatherLog",
-    "artifact_value": "ProgramData/Microsoft/Search/Data/Applications/Windows/GatherLogs/SystemIndex/SystemIndex.10.Crwl",
+    "artifact_type": "User SID",
+    "artifact_name": "User SID",
+    "artifact_value": "S-1-5-21-528816539-567677750-276746561-1001",
     "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "file_path",
-    "artifact_name": "AppRepository",
-    "artifact_value": "ProgramData/Microsoft/Windows/AppRepository/Microsoft.SkypeApp_15.65.78.0_x86__kzf8qxf38zg5c.xml",
+    "artifact_type": "Installed Application",
+    "artifact_name": "Communication App",
+    "artifact_value": "Microsoft.SkypeApp",
     "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "file_path",
-    "artifact_name": "ActivationStore",
-    "artifact_value": "ProgramData/Microsoft/Windows/AppRepository/Packages/Microsoft.SkypeApp_15.66.74.0_x86__kzf8qxf38zg5c/ActivationStore.dat",
+    "artifact_type": "Installed Application",
+    "artifact_name": "Communication App",
+    "artifact_value": "91750D7E.Slack",
     "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "file_path",
-    "artifact_name": "LockScreenImage",
-    "artifact_value": "ProgramData/Microsoft/Windows/SystemData/S-1-5-18/ReadOnly/LockScreen_Z/LockScreen___1024_0768_notdimmed.jpg",
+    "artifact_type": "Installed Application",
+    "artifact_name": "Cloud Storage App",
+    "artifact_value": "AppleInc.iCloud",
     "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "file_path",
-    "artifact_name": "SkypeCache",
-    "artifact_value": "ProgramData/Packages/Microsoft.SkypeApp_kzf8qxf38zg5c/S-1-5-21-528816539-567677750-276746561-1001/SystemAppData/Helium/Cache/7e47d72acc2cd342.dat",
+    "artifact_type": "Installed Application",
+    "artifact_name": "Utility App",
+    "artifact_value": "AD2F1837.HPPrinterControl",
     "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "file_path",
-    "artifact_name": "SlackCache",
-    "artifact_value": "ProgramData/Packages/91750D7E.Slack_8she8kybcnzg4/S-1-5-21-528816539-567677750-276746561-1002/SystemAppData/Helium/Cache/c4354f609895c491.dat",
+    "artifact_type": "Installed Application",
+    "artifact_name": "Gaming App",
+    "artifact_value": "Microsoft.XboxGamingOverlay",
     "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "file_path",
-    "artifact_name": "UpdateLog",
-    "artifact_value": "ProgramData/USOShared/Logs/System/NotificationUxBroker.291d7a59-c55e-4e7f-93cc-8930d8298cf7.1.etl",
+    "artifact_type": "Installed Application",
+    "artifact_name": "Productivity App",
+    "artifact_value": "Microsoft.YourPhone",
     "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
   },
   {
-    "artifact_type": "file_path",
-    "artifact_name": "UserRegistry",
-    "artifact_value": "Users/Default/NTUSER.DAT",
+    "artifact_type": "Installed Application",
+    "artifact_name": "Productivity App",
+    "artifact_value": "Microsoft.MicrosoftOfficeHub",
     "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
-    "confidence": "high"
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Installed Application",
+    "artifact_name": "Productivity App",
+    "artifact_value": "Microsoft.Office.OneNote",
+    "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Installed Application",
+    "artifact_name": "Media App",
+    "artifact_value": "Microsoft.Windows.Photos",
+    "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Installed Application",
+    "artifact_name": "Hardware App",
+    "artifact_value": "Microsoft.SurfaceHub",
+    "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Installed Application",
+    "artifact_name": "System App",
+    "artifact_value": "Microsoft.DesktopAppInstaller",
+    "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Installed Application",
+    "artifact_name": "System App",
+    "artifact_value": "Microsoft.Getstarted",
+    "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Installed Application",
+    "artifact_name": "Media App",
+    "artifact_value": "Microsoft.Microsoft3DViewer",
+    "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Installed Application",
+    "artifact_name": "System App",
+    "artifact_value": "Microsoft.MixedReality.Portal",
+    "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Installed Application",
+    "artifact_name": "System App",
+    "artifact_value": "Microsoft.549981C3F5F10",
+    "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "AAD Identifier",
+    "artifact_name": "AAD Tenant/Object ID",
+    "artifact_value": "d1a7c039-6175-4ddb-bcdb-a8de45cf1678",
+    "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
+  },
+  {
+    "artifact_type": "Package Family Name",
+    "artifact_name": "Skype Package ID",
+    "artifact_value": "kzf8qxf38zg5c",
+    "source_file": "cases/INC-2026-rocba-cdrive/extractions/filesystem_metadata.txt",
+    "confidence": "High",
+    "iocs": []
   }
 ]

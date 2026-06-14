@@ -1,0 +1,48 @@
+[
+  {
+    "sequence": 1,
+    "event_description": "Presence of corporate email account iaman.informant@nist.gov used for initial contact with external conspirator spy.conspirator@nist.gov.",
+    "artifacts_involved": [
+      "Observed Email",
+      "External Conspirator Email"
+    ],
+    "mitre_ttp": "T1078",
+    "confidence": "High"
+  },
+  {
+    "sequence": 2,
+    "event_description": "Subject accessed secured network drive at 10.11.11.129 outside permitted hours to collect confidential data.",
+    "artifacts_involved": [
+      "Anomalous Network Access"
+    ],
+    "mitre_ttp": "T1078",
+    "confidence": "High"
+  },
+  {
+    "sequence": 3,
+    "event_description": "Subject exfiltrated collected data via personal Gmail account iaman.informant.personal@gmail.com.",
+    "artifacts_involved": [
+      "Personal Exfiltration Account"
+    ],
+    "mitre_ttp": "T1567.002",
+    "confidence": "High"
+  },
+  {
+    "sequence": 4,
+    "event_description": "Subject utilized CCleaner and Eraser to perform data destruction and conceal exfiltration activity.",
+    "artifacts_involved": [
+      "Anti-Forensic Tools"
+    ],
+    "mitre_ttp": "T1485",
+    "confidence": "High"
+  },
+  {
+    "sequence": 5,
+    "event_description": "Presence of IP address 10.11.11.128 associated with network activity.",
+    "artifacts_involved": [
+      "IP Address"
+    ],
+    "mitre_ttp": "",
+    "confidence": "High"
+  }
+]

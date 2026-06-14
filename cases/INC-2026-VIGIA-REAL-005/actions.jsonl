@@ -1,4 +1,4 @@
-2026-06-12 14:12:34 UTC | SYSTEM | Automated pipeline extracted /mnt/hgfs/Vm shared folder/vigia-cases-main/vigia-cases-main/cases/VIGIA-REAL-005/case.json to cases/INC-2026-VIGIA-REAL-005/extractions/telemetry_source.json
-2026-06-12 14:14:47 UTC | AI_AGENT | Completed initial validation loop.
-2026-06-12 14:16:01 UTC | AI_AGENT | Successfully integrated peer review feedback.
-2026-06-12 14:16:18 UTC | EXAMINER | Cryptographically signed and verified final report data.
+{"timestamp": "2026-06-14T07:56:16Z", "actor": "SYSTEM", "action": "Automated pipeline extracted /mnt/hgfs/Vm shared folder/vigia-cases-main/vigia-cases-main/cases/VIGIA-REAL-005/case.json to cases/INC-2026-VIGIA-REAL-005/extractions/telemetry_source.json"}
+{"timestamp": "2026-06-14T07:56:16Z", "actor": "AI_AGENT", "action": "Completed Pass 1: Fact & IOC Extraction."}
+{"timestamp": "2026-06-14T07:56:28Z", "actor": "AI_AGENT", "action": "Completed Pass 1.C: Timeline Reconstruction."}
+{"timestamp": "2026-06-14T07:56:56Z", "actor": "AI_AGENT", "action": "Successfully integrated peer review feedback."}

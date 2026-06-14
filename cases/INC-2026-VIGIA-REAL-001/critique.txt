@@ -1,0 +1,26 @@
+QA AUDIT REPORT: INC-2026-VIGIA-REAL-001
+ANALYST: Junior Analyst
+REVIEWER: Senior Forensic Analyst
+
+1. FACTUAL ACCURACY & OVERSTATEMENT
+The summary explicitly claims "credential theft activities." Reviewing the provided facts, there is evidence of war driving (NetStumbler, homemade antenna, PCMCIA card), but there is zero evidence of actual credential theft (e.g., no dumped password stores, keyloggers, or exfiltrated credential files). You have conflated the *intent* described in the case narrative with *proven* forensic artifacts. Downgrade the severity of the "credential theft" claim to "potential for credential interception" until evidence of successful exfiltration is found.
+
+2. MITRE VALIDATION
+- T1555 (Credentials from Password Stores): This mapping is unsupported by the current evidence. NetStumbler is a reconnaissance tool, not a credential harvester. Remove this TTP unless you can identify specific artifacts (e.g., browser password database access, SAM hive dumping) that support it.
+- T1590/T1592: These are appropriate mappings for the war driving activity.
+
+3. SEMANTIC BIAS
+You have labeled standard Microsoft domains (login.passport.com, mobile.msn.com) as "Recovered IOCs" with a risk score of 50. These are legitimate traffic destinations for a Windows-based system. Labeling them as IOCs in a malicious context creates noise and misleads the investigation. These should be categorized as "System/Network Baseline" or "Legitimate Traffic," not malicious IOCs.
+
+4. NULL HYPOTHESIS
+Your dismissal of the null hypothesis is premature. While the presence of NetStumbler is highly indicative of malicious intent in this context, you must acknowledge that these tools are dual-use. The null hypothesis should focus on the lack of evidence for *actual* data exfiltration, rather than just dismissing the "security research" claim as a cover story.
+
+5. IOC COMPLETENESS & CATEGORIZATION
+- You have correctly identified the IRC channels, but ensure you distinguish between "Hacking Channels" (your label) and "Communication Infrastructure."
+- The "Observed Email" (whoknowsme@sbcglobal.net) is listed as an IOC but lacks context. Is this the primary account used for the war driving, or a secondary contact? Clarify the relationship between the two emails found.
+
+ACTION ITEMS:
+- Remove T1555 from the MITRE mapping.
+- Re-categorize Microsoft domains (login.passport.com, mobile.msn.com) as legitimate traffic, not malicious IOCs.
+- Update the summary to reflect "potential for interception" rather than "confirmed credential theft."
+- Re-submit the ledger for review.

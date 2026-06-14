@@ -1,56 +1,100 @@
 [
   {
-    "artifact_type": "file",
-    "artifact_name": "SysInternals.exe",
-    "artifact_value": "C:\\Users\\Public\\Downloads\\SysInternals.exe",
+    "artifact_type": "case_context",
+    "artifact_name": "Incident Type",
+    "artifact_value": "malware_masquerading_persistence",
+    "source_file": "cases/INC-2026-VIGIA-REAL-004/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": []
+  },
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Case Description",
+    "artifact_value": "A user downloaded what they believed was the SysInternals Suite but was actually a malware downloader. The system became slow and unresponsive after execution. The malware modified the hosts file, downloaded a secondary payload, and installed it as a fake Windows service.",
+    "source_file": "cases/INC-2026-VIGIA-REAL-004/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "IP Address",
+    "artifact_value": "2.0.0.1",
     "source_file": "cases/INC-2026-VIGIA-REAL-004/extractions/telemetry_source.json",
     "confidence": "high",
     "iocs": [
-      "C:\\Users\\Public\\Downloads\\SysInternals.exe",
+      "2.0.0.1"
+    ]
+  },
+  {
+    "artifact_type": "file_metadata",
+    "artifact_name": "SHA256 Hash",
+    "artifact_value": "72e6d1728a546c2f3ee32c063ed09fa6ba8c46ac33b0dd2e354087c1ad26ef48",
+    "source_file": "cases/INC-2026-VIGIA-REAL-004/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
       "72e6d1728a546c2f3ee32c063ed09fa6ba8c46ac33b0dd2e354087c1ad26ef48"
     ]
   },
   {
-    "artifact_type": "network",
-    "artifact_name": "Malicious Download URL",
-    "artifact_value": "http://www.malware430.com/html/VMwareUpdate.exe",
+    "artifact_type": "file_metadata",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "The executable has version information mimicking SysInternals (Microsoft) but is not legitimate | Presence of file download APIs (URLDownloadToFileA) indicates a downloader",
     "source_file": "cases/INC-2026-VIGIA-REAL-004/extractions/telemetry_source.json",
-    "confidence": "high",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "www.malware430.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-004/extractions/telemetry_source.json",
+    "confidence": "medium",
     "iocs": [
-      "http://www.malware430.com/html/VMwareUpdate.exe",
       "www.malware430.com"
     ]
   },
   {
-    "artifact_type": "file",
-    "artifact_name": "vmtoolsIO.exe",
-    "artifact_value": "c:\\Windows\\vmtoolsIO.exe",
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "malware430.com",
     "source_file": "cases/INC-2026-VIGIA-REAL-004/extractions/telemetry_source.json",
-    "confidence": "high",
+    "confidence": "medium",
     "iocs": [
-      "c:\\Windows\\vmtoolsIO.exe"
+      "malware430.com"
     ]
   },
   {
-    "artifact_type": "service",
-    "artifact_name": "VMwareIOHelperService",
-    "artifact_value": "VMwareIOHelperService",
+    "artifact_type": "timestamp",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Compressed event sequence in 3 minutes: download \u2192 execution \u2192 secondary download \u2192 service installation | Download from malware430.com occurs 17 seconds after execution",
     "source_file": "cases/INC-2026-VIGIA-REAL-004/extractions/telemetry_source.json",
-    "confidence": "high",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "sysinternals.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-004/extractions/telemetry_source.json",
+    "confidence": "medium",
     "iocs": [
-      "VMwareIOHelperService"
+      "sysinternals.com"
     ]
   },
   {
-    "artifact_type": "configuration",
-    "artifact_name": "Hosts File Modification",
-    "artifact_value": "sysinternals.com and malware430.com redirected to 192.168.x.x",
+    "artifact_type": "bash_history",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "The malware installs a service with a VMware-like name to avoid detection | Modification of the hosts file to redirect legitimate domains to internal IPs",
     "source_file": "cases/INC-2026-VIGIA-REAL-004/extractions/telemetry_source.json",
-    "confidence": "high",
-    "iocs": [
-      "sysinternals.com",
-      "malware430.com",
-      "192.168.x.x"
-    ]
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "registry",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Service name mimicking VMware to evade detection | Deletion of prefetch files as an anti-forensic technique",
+    "source_file": "cases/INC-2026-VIGIA-REAL-004/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
   }
 ]

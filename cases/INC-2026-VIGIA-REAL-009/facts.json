@@ -1,0 +1,130 @@
+[
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Incident Type",
+    "artifact_value": "insider_exfiltration_privilege_escalation",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": []
+  },
+  {
+    "artifact_type": "case_context",
+    "artifact_name": "Case Description",
+    "artifact_value": "Steve Vogon, a company employee, attempted to exfiltrate confidential data by copying files from an administrative share, compressing them, and transferring them via a Perl script through an external HTTP proxy.",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "domain.xls",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "domain.xls"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "ftp.pcap",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "ftp.pcap"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "archive.zip",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "archive.zip"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "xfer.pl",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "xfer.pl"
+    ]
+  },
+  {
+    "artifact_type": "bash_history",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Mass copy of files from administrative share (Admin_share) to personal directory | Deletion of xfer.pl script after use (covering tracks)",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "External IP",
+    "artifact_value": "219.93.175.67",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "219.93.175.67"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "metasploit.com",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "metasploit.com"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "xmodulepath.tgz",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "xmodulepath.tgz"
+    ]
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Domain",
+    "artifact_value": "root.sh",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "high",
+    "iocs": [
+      "root.sh"
+    ]
+  },
+  {
+    "artifact_type": "bash_history",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Download of privilege escalation exploit from Metasploit | Configuration of external HTTP proxy (219.93.175.67) to channel exfiltration",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "network_flow",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "Use of external proxy to mask exfiltration destination | Transfer of zip file with confidential data via HTTP",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  },
+  {
+    "artifact_type": "process_list",
+    "artifact_name": "Forensic Anomaly",
+    "artifact_value": "All suspicious strings map to the same user (stevev, UID 501) | Network packets with exfiltrated data still resident in RAM",
+    "source_file": "cases/INC-2026-VIGIA-REAL-009/extractions/telemetry_source.json",
+    "confidence": "medium",
+    "iocs": []
+  }
+]

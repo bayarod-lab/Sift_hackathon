@@ -1,0 +1,52 @@
+[
+  {
+    "sequence": 1,
+    "event_description": "Suspect Greg Schardt acquired a Dell CPi laptop and configured it with a wireless PCMCIA card and homemade antenna for wireless reconnaissance.",
+    "artifacts_involved": [
+      "Case Description"
+    ],
+    "mitre_ttp": "T1590",
+    "confidence": "High"
+  },
+  {
+    "sequence": 2,
+    "event_description": "Presence of NetStumbler executable in the Recycle Bin indicates the tool was staged on the system for wireless network discovery.",
+    "artifacts_involved": [
+      "NetStumbler Executable",
+      "Forensic Anomaly"
+    ],
+    "mitre_ttp": "T1592",
+    "confidence": "High"
+  },
+  {
+    "sequence": 3,
+    "event_description": "Suspect established communication channels via IRC networks including Undernet and EFnet to participate in hacking-related discussions.",
+    "artifacts_involved": [
+      "Hacking IRC Channels",
+      "Domain",
+      "Forensic Anomaly"
+    ],
+    "mitre_ttp": "",
+    "confidence": "Medium"
+  },
+  {
+    "sequence": 4,
+    "event_description": "Suspect utilized email accounts mrevilrulez@yahoo.com and whoknowsme@sbcglobal.net for communication and potential identity management.",
+    "artifacts_involved": [
+      "Suspect Email",
+      "Observed Email",
+      "Forensic Anomaly"
+    ],
+    "mitre_ttp": "",
+    "confidence": "High"
+  },
+  {
+    "sequence": 5,
+    "event_description": "System telemetry recorded connections to Microsoft services login.passport.com and mobile.msn.com, consistent with standard OS network activity.",
+    "artifacts_involved": [
+      "Domain"
+    ],
+    "mitre_ttp": "",
+    "confidence": "High"
+  }
+]

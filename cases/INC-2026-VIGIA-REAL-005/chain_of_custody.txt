@@ -1,3 +1,5 @@
-Timestamp: Fri Jun 12 14:12:32 UTC 2026
+Timestamp: Sun Jun 14 07:56:14 UTC 2026
 Source File: /mnt/hgfs/Vm shared folder/vigia-cases-main/vigia-cases-main/cases/VIGIA-REAL-005/case.json
-SHA-256 Hash: d6a98561b771ed1e2a6396c799a3ba7609b8bc1f94debe51859d3a7da2b3ee1f
+Hash Algorithm: SHA256
+Acquisition Hash: d6a98561b771ed1e2a6396c799a3ba7609b8bc1f94debe51859d3a7da2b3ee1f
+Hash Source: Independently calculated via native sha256sum

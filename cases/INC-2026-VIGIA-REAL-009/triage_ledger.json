@@ -1,0 +1,129 @@
+{
+  "case_id": "VIGIA-REAL-009",
+  "target": "Steve Vogon (stevev, UID 501)",
+  "intent_verdict": "Malicious",
+  "summary": "Subject Steve Vogon (UID 501) executed a multi-stage attack involving privilege escalation and data exfiltration. The subject utilized Metasploit to gain elevated privileges, followed by the unauthorized access and mass copying of sensitive files from an administrative share (Admin_share) to a local directory. The data was then compressed into archive.zip and exfiltrated via a Perl script (xfer.pl) routed through an external HTTP proxy at 219.93.175.67. The subject attempted to conceal activity by deleting the xfer.pl script post-transfer. Coverage: Filesystem=YES; Registry=NO; EventLogs=YES;",
+  "null_hypothesis": "The subject claims the Perl script and proxy configuration were for legitimate network troubleshooting and data backup, but the deletion of the script post-transfer, the unauthorized use of Metasploit for privilege escalation, and the staging of administrative data refutes this hypothesis.",
+  "case_confidence": 95,
+  "mitre_ttps": [
+    "T1071.001",
+    "T1068",
+    "T1005",
+    "T1560.001",
+    "T1070.004"
+  ],
+  "artifacts": [
+    {
+      "name": "xfer.pl",
+      "type": "script",
+      "value": "xfer.pl",
+      "description": "Perl script used for exfiltration",
+      "confidence": "high",
+      "recommended_validation": "Review script content and logs",
+      "risk_score": 90,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "xfer.pl"
+      ]
+    },
+    {
+      "name": "219.93.175.67",
+      "type": "network_flow",
+      "value": "219.93.175.67",
+      "description": "External HTTP proxy used for exfiltration",
+      "confidence": "high",
+      "recommended_validation": "Check firewall logs for connections",
+      "risk_score": 95,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "219.93.175.67"
+      ]
+    },
+    {
+      "name": "metasploit.com",
+      "type": "domain",
+      "value": "metasploit.com",
+      "description": "Source of privilege escalation exploit",
+      "confidence": "high",
+      "recommended_validation": "Check browser history and download logs",
+      "risk_score": 90,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "metasploit.com"
+      ]
+    },
+    {
+      "name": "archive.zip",
+      "type": "file",
+      "value": "archive.zip",
+      "description": "Compressed archive of exfiltrated data",
+      "confidence": "high",
+      "recommended_validation": "Analyze archive contents",
+      "risk_score": 85,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "archive.zip"
+      ]
+    },
+    {
+      "name": "root.sh",
+      "type": "script",
+      "value": "root.sh",
+      "description": "Potential privilege escalation script",
+      "confidence": "high",
+      "recommended_validation": "Analyze script content",
+      "risk_score": 90,
+      "priority": "High",
+      "review_status": "pending",
+      "iocs": [
+        "root.sh"
+      ]
+    },
+    {
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "domain.xls",
+      "description": "Domain IOC promoted from deterministic extraction for completeness.",
+      "confidence": "High",
+      "recommended_validation": "Corroborate against source telemetry and infrastructure records.",
+      "risk_score": 60,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "domain.xls"
+      ]
+    },
+    {
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "ftp.pcap",
+      "description": "Domain IOC promoted from deterministic extraction for completeness.",
+      "confidence": "High",
+      "recommended_validation": "Corroborate against source telemetry and infrastructure records.",
+      "risk_score": 60,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "ftp.pcap"
+      ]
+    },
+    {
+      "name": "Domain",
+      "type": "network_flow",
+      "value": "xmodulepath.tgz",
+      "description": "Domain IOC promoted from deterministic extraction for completeness.",
+      "confidence": "High",
+      "recommended_validation": "Corroborate against source telemetry and infrastructure records.",
+      "risk_score": 60,
+      "priority": "Medium",
+      "review_status": "pending",
+      "iocs": [
+        "xmodulepath.tgz"
+      ]
+    }
+  ]
+}
