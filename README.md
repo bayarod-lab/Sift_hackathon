@@ -1,5 +1,3 @@
-Here are your updated project documents, revised to explicitly satisfy the Hackathon requirements. The formatting has been aligned to ensure judges can immediately see that you hit every rubric criteria.
-
 1. Updated README.md
 Markdown
 # 🕵️‍♂️ ATP: Autonomous DFIR Triage Pipeline
@@ -13,7 +11,7 @@ Markdown
   * *Note: The video is under five (5) minutes and features a screencast of live terminal execution with audio narration, showcasing the agent working against real evidence and completing a self-correction sequence. It contains no copyrighted music or third-party trademarks.*
 * **GitHub Repository:** [https://github.com/bayarod-lab/Sift_hackathon](https://github.com/bayarod-lab/Sift_hackathon)[cite: 18] *(Ensure the MIT License is visible at the top of the repository page in the About section).*
 
----
+--- 
 
 ## 🏗️ Architecture Diagram
 

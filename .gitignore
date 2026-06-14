@@ -1,19 +1,27 @@
 # Ignore Aider internal state files
 .aider*
+
+# Ignore generated outputs
 exports/
+__pycache__/
+
+# NEVER UPLOAD API KEYS
+.env
 
 # Ignore raw forensic binaries and massive text dumps
 *.raw
 *.img
 *.pcap
 *memory_scan_results.txt
-
-# Keep structured ledger files
-!cases/*/triage_ledger.json
-cases/*/extractions/
-cases/*/extractions/
 *.e01
-*.raw
 *.zip
 *.edb
 *.ost
+
+# Ignore the messy extraction folders
+cases/*/extractions/
+
+# KEEP STRUCTURED LOGS FOR JUDGES (Hackathon Requirement)
+!cases/*/triage_ledger.json
+!cases/*/actions.jsonl
+!cases/*/critique.txt
