@@ -1,4 +1,3 @@
-1. Updated README.md
 Markdown
 # 🕵️‍♂️ ATP: Autonomous DFIR Triage Pipeline
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
