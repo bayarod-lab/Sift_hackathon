@@ -1,67 +1,63 @@
-🕵️‍♂️ ATP: Autonomous DFIR Triage Pipeline (Hackathon Prototype)
-📋 Official Hackathon Compliance Checklist
+# 🕵️‍♂️ ATP: Autonomous DFIR Triage Pipeline (Hackathon Prototype)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+## 📋 Official Hackathon Compliance Checklist
 As requested by the organizers, the following components are included in this submission:
+- [x] **Code Repository:** Public repository with MIT License included.
+- [x] **Setup Instructions:** Provided in Section 3 below.
+- [x] **Execution/Deployment Instructions:** Provided in Section 4 below.
+- [x] **Text Description:** Provided in Section 1 (Features & Functionality).
+- [x] **Demonstration Video:** Link provided in the header.
+- [x] **Architecture Diagram:** Provided in Section 2.
+- [x] **Evidence Dataset Documentation:** See [EVIDENCE.md](EVIDENCE.md)
+- [x] **Accuracy Report:** See [ACCURACY_REPORT.md](ACCURACY_REPORT.md)
+- [x] **Agent Execution Logs:** Provided in Section 7 below.
 
-[x] Code Repository: Public repository with MIT License included.
+**Elevator Pitch:** An experimental proof-of-concept orchestrator that automates the initial "first pass" of digital evidence triage using strict read-only constraints. Built for the SANS FIND EVIL Hackathon 2026.
 
-[x] Setup Instructions: Provided in Section 3 below.
+### 🔗 Official Submission Links
+* **Devpost Project Page:** [Insert Devpost URL Here]
+* **Demonstration Video:** [https://youtu.be/aQvzBe00tM8] 
+* **GitHub Repository:** [https://github.com/bayarod-lab/Sift_hackathon](https://github.com/bayarod-lab/Sift_hackathon) 
 
-[x] Execution/Deployment Instructions: Provided in Section 4 below.
+--- 
 
-[x] Text Description: Provided in Section 1 (Features & Functionality).
+## 🏗️ Architecture & Classification Strategy
 
-[x] Demonstration Video: Link provided in the header.
+![Architecture Diagram](docs/Diagram.png)
 
-[x] Architecture Diagram: Provided in Section 2.
+This orchestrator executes under an **Alternative Agentic IDE** pattern (utilizing Aider). Evidence integrity is enforced via strict architectural isolation layers rather than soft prompt controls. The LLM is completely isolated from the raw evidence. 
 
-[x] Evidence Dataset Documentation: See EVIDENCE.md
+The bash orchestrator (`analyze.sh`) extracts data using OS-level SIFT tools (`fls`, `ewfmount`, `7z`, `tshark`), dumps the output into truncated text files, and uses Aider's `--read` flag to create a hard boundary. The original forensic data blocks remain completely read-only, ensuring zero spoliation even if the model hallucinates or fails.
 
-[x] Accuracy Report: See ACCURACY_REPORT.md
+---
 
-[x] Agent Execution Logs: Provided in Section 7 below.
+## 🚀 Key Features & Functionality
 
-Elevator Pitch: An experimental proof-of-concept orchestrator that automates the initial "first pass" of digital evidence triage using strict read-only constraints. Built for the SANS FIND EVIL Hackathon 2026.
+* **Read-Only Confinement:** The AI never executes shell commands. It acts strictly as a text-parsing and correlation engine over pre-extracted SIFT utility outputs.
+* **Hybrid Capability Discovery:** Queries the active AI model via `litellm`. If it detects a model with a larger context window (e.g., `gemini-3.5-flash`), it dynamically increases the `head -n` extraction limits up to 5,000 lines.
+* **API Rate-Limit Guardrails:** Separates execution speed from the model type. Users on free API tiers are protected by automated 45-second fallback cooldown buffers to proactively block `429 Resource Exhausted` errors.
+* **Multi-Pass "Peer Review":** Ingestion tasks map across distinct logical levels. An initial loop extracts IOCs, a second builds the ledger, and a third spawns a "Senior Forensic Review" prompt that critiques the raw findings, flags unsupported MITRE mappings, and forces a self-correction pass.
+* **Basic Schema Validation:** Uses programmatic Python validation paired with regex (`sed`) to automatically strip out LLM markdown pollution or broken JSON structures, forcing retries if the schema breaks.
+* **Deterministic OSINT Integration:** Automatically scrapes extracted MD5/SHA256 hashes and queries the VirusTotal API (`check_hashes.py`) to inject confirmed cryptographic threat intelligence directly into the AI's fact graph prior to analysis[cite: 3].
+* **Adversarial Hunt Pass:** Executes a specialized `Pass 1.D` agent explicitly instructed to hunt for high-severity MITRE TTPs (e.g., DLL sideloading, double extensions, masqueraded system binaries) to counter the AI's baseline null-hypothesis bias during the final correlation phase[cite: 3].
+* **Automated Network Parsing:** Detects `.pcap` and `.pcapng` telemetry targets and autonomously streams protocol hierarchies, DNS queries, and TLS SNI artifacts via `tshark` directly into the agent's context window[cite: 3].
 
-🔗 Official Submission Links
-Devpost Project Page: [Insert Devpost URL Here]
+---
 
-Demonstration Video: [https://youtu.be/aQvzBe00tM8]
+## ⚠️ Known Limitations (Hackathon Prototype Realities)
 
-GitHub Repository: https://github.com/bayarod-lab/Sift_hackathon
+* **Data Truncation Blindspots:** To prevent token-limit blowouts, the script aggressively truncates raw evidence files (capping string dumps at 1,500 - 5,000 lines depending on the model). Deeply hidden malware will be missed.
+* **Encoding Artifacts:** Complex file paths or non-standard character encodings (e.g., UTF-16/Chinese characters) in raw extractions can occasionally cause mojibake in the final PDF output.
+* **False Positives:** While heuristic filtering is in place to ignore standard domains (like `google.com`), the pipeline may still flag benign administrative tools or local file shortcuts as suspicious if contextual network telemetry is missing.
 
-🏗️ Architecture & Classification Strategy
-This orchestrator executes under an Alternative Agentic IDE pattern (utilizing Aider). Evidence integrity is enforced via strict architectural isolation layers rather than soft prompt controls. The LLM is completely isolated from the raw evidence.
+---
 
-The bash orchestrator (analyze.sh) extracts data using OS-level SIFT tools (fls, ewfmount, 7z, tshark), dumps the output into truncated text files, and uses Aider's --read flag to create a hard boundary. The original forensic data blocks remain completely read-only, ensuring zero spoliation even if the model hallucinates or fails.
+## ⚙️ Prerequisites & Setup Instructions
 
-🚀 Key Features & Functionality
-Read-Only Confinement: The AI never executes shell commands. It acts strictly as a text-parsing and correlation engine over pre-extracted SIFT utility outputs.
-
-Hybrid Capability Discovery: Queries the active AI model via litellm. If it detects a model with a larger context window (e.g., gemini-3.5-flash), it dynamically increases the head -n extraction limits up to 5,000 lines.
-
-API Rate-Limit Guardrails: Separates execution speed from the model type. Users on free API tiers are protected by automated 45-second fallback cooldown buffers to proactively block 429 Resource Exhausted errors.
-
-Multi-Pass "Peer Review": Ingestion tasks map across distinct logical levels. An initial loop extracts IOCs, a second builds the ledger, and a third spawns a "Senior Forensic Review" prompt that critiques the raw findings, flags unsupported MITRE mappings, and forces a self-correction pass.
-
-Basic Schema Validation: Uses programmatic Python validation paired with regex (sed) to automatically strip out LLM markdown pollution or broken JSON structures, forcing retries if the schema breaks.
-
-Deterministic OSINT Integration: The pipeline automatically scrapes extracted MD5/SHA256 hashes[cite: 3]. It then queries the VirusTotal API using check_hashes.py[cite: 3]. This injects confirmed cryptographic threat intelligence directly into the AI's fact graph prior to analysis[cite: 3].
-
-Adversarial Hunt Pass: The orchestrator executes a specialized Pass 1.D adversarial hunt[cite: 3]. This agent is explicitly instructed to hunt for high-severity MITRE TTPs, such as DLL sideloading, double extensions, and masqueraded system binaries[cite: 3]. This counters the AI's baseline null-hypothesis bias during the final correlation phase[cite: 3].
-
-Automated Network Parsing: The system detects .pcap and .pcapng telemetry targets[cite: 3]. It autonomously streams protocol hierarchies, DNS queries, and TLS SNI artifacts via tshark directly into the agent's context window[cite: 3].
-
-⚠️ Known Limitations (Hackathon Prototype Realities)
-Data Truncation Blindspots: To prevent token-limit blowouts, the script aggressively truncates raw evidence files (capping string dumps at 1,500 - 5,000 lines depending on the model). Deeply hidden malware will be missed.
-
-Encoding Artifacts: Complex file paths or non-standard character encodings (e.g., UTF-16/Chinese characters) in raw extractions can occasionally cause mojibake in the final PDF output.
-
-False Positives: While heuristic filtering is in place to ignore standard domains (like google.com), the pipeline may still flag benign administrative tools or local file shortcuts as suspicious if contextual network telemetry is missing.
-
-⚙️ Prerequisites & Setup Instructions
 This platform is optimized for native Linux environments and purpose-built for the SANS SIFT Workstation.
 
-1. Ingest System Dependencies
+### 1. Ingest System Dependencies
 Ensure you have Python 3 installed. Install the background forensic utilities, compression layouts, and PDF rendering backends required by your host system:
 
 Bash
