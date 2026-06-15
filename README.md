@@ -86,6 +86,9 @@ export AI_MODEL="gemini/gemini-3.5-flash"
 
 # [Optional Override] Scale performance parameters by designating billing profile (FREE or PAID)
 export API_TIER="FREE"
+
+# [Optional] Set VirusTotal API Key for cryptographic hash reputation checks
+export VT_API_KEY="your-vt-key"
 ```
 
 ---
