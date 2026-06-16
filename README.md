@@ -24,7 +24,7 @@ As requested by the organizers, the following components are included in this su
 
 ## 🏗️ Architecture & Classification Strategy
 
-![Architecture Diagram](docs/Diagram.png)
+![Architecture Diagram](docs/Architecture.png)
 
 This orchestrator executes under an **Alternative Agentic IDE** pattern (utilizing Aider). Evidence integrity is enforced via strict architectural isolation layers rather than soft prompt controls. The LLM is completely isolated from the raw evidence. 
 
